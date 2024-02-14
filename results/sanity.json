@@ -223,6 +223,68 @@
     "Sanity"
   ],
   "severity": "Critical",
+  "comment": "Unresolved reference 'list'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/figures/triangle.py",
+      "language": "Python",
+      "line": 16,
+      "offset": 27,
+      "length": 4,
+      "code": {
+        "startLine": 14,
+        "length": 4,
+        "offset": 30,
+        "surroundingCode": "\r\n\r\ndef find_triangle(points: list):\r\n    max_sum = 0\r\n    res = None\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "01b1eb5440d3f9761ae2fadfeb31872506cc88ca83f9db1b8ec861d0f4a9c5d2"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'figures'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/figures/triangle.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 6,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 5,
+        "surroundingCode": "from figures.line import Line\r\n\r\n\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "0d9434f9673b767c3b004529b5135bed65da743b02402c6e00efc400b471978f"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
   "comment": "Unresolved reference 'PyQt6'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -316,6 +378,37 @@
     "Sanity"
   ],
   "severity": "Critical",
+  "comment": "Unresolved reference 'Line'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/figures/triangle.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 26,
+      "length": 4,
+      "code": {
+        "startLine": 1,
+        "length": 4,
+        "offset": 25,
+        "surroundingCode": "from figures.line import Line\r\n\r\n\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "5963c40b13eab0179763b294642a3773afd360cfce11c7d83796af89e4608a4a"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
   "comment": "Unresolved reference 'PyQt6'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -339,6 +432,37 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "5ba7771691008ef4b12fdba969a3bb7717f1db977fb4cb615fc79f5626c64c56"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'sum'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/figures/triangle.py",
+      "language": "Python",
+      "line": 29,
+      "offset": 20,
+      "length": 3,
+      "code": {
+        "startLine": 27,
+        "length": 3,
+        "offset": 113,
+        "surroundingCode": "                tr = Triangle(p1, p2, p3)\r\n                point = tr.heights_intersection()\r\n                if sum(point) > max_sum:\r\n                    max_sum = sum(point)\r\n                    res = tr, point\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "5d28e318a9796c5bfc032daff4a34bc6bff975bb4350f41490fe067bff567540"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -463,68 +587,6 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "871aadc2e39abadecd1f897e69f4ab56d6f704fafc79b0a2e36d4bc655f14d62"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'QTableWidgetItem'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 2,
-      "offset": 29,
-      "length": 16,
-      "code": {
-        "startLine": 1,
-        "length": 16,
-        "offset": 39,
-        "surroundingCode": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "8e15bfeadc33b638c03990ecf35711c7a4aa399f2da740ad6b9753f44c65e3ac"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'PyQt6'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 2,
-      "offset": 6,
-      "length": 5,
-      "code": {
-        "startLine": 1,
-        "length": 5,
-        "offset": 16,
-        "surroundingCode": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "8f13d8f52da91cf23b39f23152ceb12f604d95cce55aed99954766afbefa8b54"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -688,37 +750,6 @@
     "Sanity"
   ],
   "severity": "Critical",
-  "comment": "Unresolved reference 'QMainWindow'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 2,
-      "offset": 47,
-      "length": 11,
-      "code": {
-        "startLine": 1,
-        "length": 11,
-        "offset": 57,
-        "surroundingCode": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "b0954f4c8338e0d96a804c18484f1e47131c2fae12d6e5f08e3a547e27f50c1c"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
   "comment": "Unresolved reference 'math'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -773,37 +804,6 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "e7e560797ab6fd7f41f3b59dc6593b3d6266fdd87b4523c5e17e0911511677c2"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "No module named 'sys'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 8,
-      "length": 3,
-      "code": {
-        "startLine": 1,
-        "length": 3,
-        "offset": 7,
-        "surroundingCode": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "e8b4783247ee9ad3b42e1ea65b8f8898c9df7c21cd66906f20b5b7591c85d839"
 },{
   "tool": "Code Inspection",
   "category": "Python",
