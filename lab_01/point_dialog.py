@@ -5,26 +5,25 @@ class PointDialog(QDialog):
     def __init__(self, x=0, y=0):
         super().__init__()
 
-        main_layout = QVBoxLayout()
-        self.setLayout(main_layout)
+        layout = QVBoxLayout(self)
 
-        main_layout.addWidget(QLabel("Координата X:"))
+        layout.addWidget(QLabel("Координата X:"))
 
         self._x_edit = QDoubleSpinBox()
         self._x_edit.setRange(-1e300, 1e300)
         self._x_edit.setValue(float(x))
-        main_layout.addWidget(self._x_edit)
+        layout.addWidget(self._x_edit)
 
-        main_layout.addWidget(QLabel("Координата Y:"))
+        layout.addWidget(QLabel("Координата Y:"))
 
         self._y_edit = QDoubleSpinBox()
         self._y_edit.setRange(-1e300, 1e300)
         self._y_edit.setValue(float(y))
-        main_layout.addWidget(self._y_edit)
+        layout.addWidget(self._y_edit)
 
         buttons_layout = QHBoxLayout()
         buttons_layout.setContentsMargins(0, 0, 0, 0)
-        main_layout.addLayout(buttons_layout)
+        layout.addLayout(buttons_layout)
 
         self._button_ok = QPushButton("Ок")
         self._button_ok.clicked.connect(self.accept)
