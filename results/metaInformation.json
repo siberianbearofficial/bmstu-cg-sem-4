@@ -1,19 +1,19 @@
 {
-  "total": 7,
+  "total": 3,
   "tools inspection": {
-    "Code Inspection": 7
+    "Code Inspection": 3
   },
   "linter": "QDPYC",
   "attributes": {
     "vcs": {
       "sarifIdea": {
         "repositoryUri": "https://github.com/siberianbearofficial/bmstu-cg-sem-4.git",
-        "revisionId": "6682686a702e433741650786d6daa8b8f9107cd6",
+        "revisionId": "8e2c7cfe390ada228616e9eafe01a815c2925ea9",
         "branch": "refs/heads/main"
       }
     },
     "deviceId": "200820300000000-88cb-9530-7d3b-fa48d282756f",
-    "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/7905859429",
+    "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/7923120555",
     "repoUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4.git"
   }
 }

@@ -1,130 +1,6 @@
 {"version":"3","listProblem":[{
   "tool": "Code Inspection",
   "category": "Python",
-  "type": "Unclear exception clauses",
-  "tags": [
-    "Python"
-  ],
-  "severity": "Moderate",
-  "comment": "Too broad exception clause",
-  "detailsInfo": "Reports exception clauses that do not provide specific information\nabout the problem.\n\n**Example:**\n\n* Clauses that do not specify an exception class\n* Clauses that are specified as `Exception`",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/points.py",
-      "language": "Python",
-      "line": 108,
-      "offset": 21,
-      "length": 6,
-      "code": {
-        "startLine": 106,
-        "length": 6,
-        "offset": 111,
-        "surroundingCode": "                            max_triangle = t\n                            max_point = point\n                    except:\n                        pass\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyBroadExceptionInspection"
-  },
-  "hash": "3b42b4ff392271fd4c0ecbb1c4cbdf206d0b454f09d75cc527de0b426c3f7233"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Method is not declared static",
-  "tags": [
-    "Python"
-  ],
-  "severity": "Moderate",
-  "comment": "Method `task` may be 'static'",
-  "detailsInfo": "Reports any methods that do not require a class instance creation and can be\nmade static.\n\n**Example:**\n\n\n    class MyClass(object):\n        def my_method(self, x):\n            print(x)\n\nIf a **Make function from method** quick-fix is applied, the code changes to:\n\n\n    def my_method(x):\n        print(x)\n\n\n    class MyClass(object):\n        pass\n\nIf you select the **Make method static** quick-fix, the `@staticmethod` decorator is added:\n\n\n    class MyClass(object):\n        @staticmethod\n        def my_method(x):\n            print(x)\n",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 63,
-      "offset": 9,
-      "length": 4,
-      "code": {
-        "startLine": 61,
-        "length": 4,
-        "offset": 73,
-        "surroundingCode": "                                      QTableWidgetItem(str(y)))\n\n    def task(self):\n        msgbox = QMessageBox()\n        msgbox.setWindowTitle(\"Условие\")"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyMethodMayBeStaticInspection"
-  },
-  "hash": "23d481e07963362f9d26b617a1ddad274855397bc86c32cd58b93fd42fa925d6"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Method is not declared static",
-  "tags": [
-    "Python"
-  ],
-  "severity": "Moderate",
-  "comment": "Method `no_triangle` may be 'static'",
-  "detailsInfo": "Reports any methods that do not require a class instance creation and can be\nmade static.\n\n**Example:**\n\n\n    class MyClass(object):\n        def my_method(self, x):\n            print(x)\n\nIf a **Make function from method** quick-fix is applied, the code changes to:\n\n\n    def my_method(x):\n        print(x)\n\n\n    class MyClass(object):\n        pass\n\nIf you select the **Make method static** quick-fix, the `@staticmethod` decorator is added:\n\n\n    class MyClass(object):\n        @staticmethod\n        def my_method(x):\n            print(x)\n",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 98,
-      "offset": 9,
-      "length": 11,
-      "code": {
-        "startLine": 96,
-        "length": 11,
-        "offset": 31,
-        "surroundingCode": "        msgbox.exec()\n\n    def no_triangle(self):\n        msgbox = QMessageBox()\n        msgbox.setText(\"Все треугольники вырожденные\")"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyMethodMayBeStaticInspection"
-  },
-  "hash": "3785f52653b549be7f4cd356efa4614f317aeebd0cccfff069ca0c92eaf3fb54"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Method is not declared static",
-  "tags": [
-    "Python"
-  ],
-  "severity": "Moderate",
-  "comment": "Method `not_enough_points` may be 'static'",
-  "detailsInfo": "Reports any methods that do not require a class instance creation and can be\nmade static.\n\n**Example:**\n\n\n    class MyClass(object):\n        def my_method(self, x):\n            print(x)\n\nIf a **Make function from method** quick-fix is applied, the code changes to:\n\n\n    def my_method(x):\n        print(x)\n\n\n    class MyClass(object):\n        pass\n\nIf you select the **Make method static** quick-fix, the `@staticmethod` decorator is added:\n\n\n    class MyClass(object):\n        @staticmethod\n        def my_method(x):\n            print(x)\n",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 93,
-      "offset": 9,
-      "length": 17,
-      "code": {
-        "startLine": 91,
-        "length": 17,
-        "offset": 40,
-        "surroundingCode": "            self.no_triangle()\n\n    def not_enough_points(self):\n        msgbox = QMessageBox()\n        msgbox.setText(\"Минимальное число разных точек - 3\")"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyMethodMayBeStaticInspection"
-  },
-  "hash": "b34a55dab346251295e1f30a3bbdcfd60b5ffe242925d6cb563a421f8ea7a746"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
   "type": "PEP 8 naming convention violation",
   "tags": [
     "Python"
@@ -137,11 +13,11 @@
       "type": "file",
       "path": "lab_01/canvas.py",
       "language": "Python",
-      "line": 47,
+      "line": 51,
       "offset": 9,
       "length": 11,
       "code": {
-        "startLine": 45,
+        "startLine": 49,
         "length": 11,
         "offset": 37,
         "surroundingCode": "        self._painter.end()\n\n    def resizeEvent(self, a0) -> None:\n        self.scale()\n        super().resizeEvent(a0)"
@@ -152,7 +28,7 @@
     "module": "project",
     "inspectionName": "PyPep8NamingInspection"
   },
-  "hash": "1f1d968f1857a8603b25856998ced6b4de2e8595dbdd18e34571238f47296945"
+  "hash": "2bd4a2f0b675b37ade5114b05f055875125a80d4224d4b7a1d4019b77bbeb2dc"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -168,14 +44,14 @@
       "type": "file",
       "path": "lab_01/canvas.py",
       "language": "Python",
-      "line": 32,
+      "line": 37,
       "offset": 9,
       "length": 10,
       "code": {
-        "startLine": 30,
+        "startLine": 35,
         "length": 10,
         "offset": 31,
-        "surroundingCode": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        self._painter.begin(self)\n"
+        "surroundingCode": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        super().paintEvent(a0)\n        self._painter.begin(self)"
       }
     }
   ],
@@ -183,36 +59,36 @@
     "module": "project",
     "inspectionName": "PyPep8NamingInspection"
   },
-  "hash": "66b64d2bce35d281b7106c902bf5c89613a82fe6208fdd05a73d998a84d6fc1b"
+  "hash": "324e9018dbfed94732ce77498db08c1e085329ec25b22ade4bea3998cff9bd9c"
 },{
   "tool": "Code Inspection",
   "category": "Python",
-  "type": "Unused local symbols",
+  "type": "PEP 8 naming convention violation",
   "tags": [
     "Python"
   ],
   "severity": "Moderate",
-  "comment": "Parameter 'a0' value is not used",
-  "detailsInfo": "Reports local variables, parameters, and functions that are locally defined, but not used name in a function.",
+  "comment": "Function name should be lowercase",
+  "detailsInfo": "Reports violations of the\n[PEP8](https://www.python.org/dev/peps/pep-0008/) naming conventions.\n\n**Example:**\n\n\n    class mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n\nIn this code fragment, IDE offers to rename `mammalia` to `Mammalia`.\nWhen the quick-fix is applied, the code change to:\n\n\n    class Mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n",
   "sources": [
     {
       "type": "file",
-      "path": "lab_01/canvas.py",
+      "path": "lab_01/points_table.py",
       "language": "Python",
-      "line": 32,
-      "offset": 26,
-      "length": 2,
+      "line": 36,
+      "offset": 9,
+      "length": 21,
       "code": {
-        "startLine": 30,
-        "length": 2,
-        "offset": 48,
-        "surroundingCode": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        self._painter.begin(self)\n"
+        "startLine": 34,
+        "length": 21,
+        "offset": 49,
+        "surroundingCode": "        layout.addWidget(delete_button)\n\n    def mouseDoubleClickEvent(self, a0):\n        super().mouseDoubleClickEvent(a0)\n        dialog = PointDialog(self.point.x, self.point.y)"
       }
     }
   ],
   "attributes": {
     "module": "project",
-    "inspectionName": "PyUnusedLocalInspection"
+    "inspectionName": "PyPep8NamingInspection"
   },
-  "hash": "5f4337df824d99b78d8d9458511d093462267d1d301e8b4ead4920bfaba567d4"
+  "hash": "4912eb39668b15da8f6281fc3aea6dc5ca1deed95b5fa934cfad1566c997cc66"
 }]}

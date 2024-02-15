@@ -979,19 +979,19 @@
                 ]
               },
               {
-                "id": "PyMethodParametersInspection",
+                "id": "PyChainedComparisonsInspection",
                 "shortDescription": {
-                  "text": "Improper first parameter"
+                  "text": "Too complex chained comparisons"
                 },
                 "fullDescription": {
-                  "text": "Reports methods that lack the first parameter that is usually named 'self'. Example: 'class Movie:\n\n   def show():\n       pass' When the quick-fix is applied, the code changes to: 'class Movie:\n\n   def show(self):\n       pass' The inspection also reports naming issues in class methods. Example: 'class Movie:\n    @classmethod\n    def show(abc):\n        pass' Since the first parameter of a class method should be 'cls', the IDE provides a quick-fix to rename it.",
-                  "markdown": "Reports methods that lack the first parameter that is usually\nnamed `self`.\n\n**Example:**\n\n\n    class Movie:\n\n       def show():\n           pass\n\nWhen the quick-fix is applied, the code changes to:\n\n\n    class Movie:\n\n       def show(self):\n           pass\n\nThe inspection also reports naming issues in class methods.\n\n**Example:**\n\n\n    class Movie:\n        @classmethod\n        def show(abc):\n            pass\n\nSince the first parameter of a class method should be `cls`, the IDE provides a quick-fix\nto rename it."
+                  "text": "Reports chained comparisons that can be simplified. Example: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if x >= xmin and x <= xmax:\n          pass' The IDE offers to simplify 'if x >= xmin and x <= xmax'. When the quick-fix is applied, the code changes to: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if xmin <= x <= xmax:\n          pass'",
+                  "markdown": "Reports chained comparisons that can be simplified.\n\n**Example:**\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if x >= xmin and x <= xmax:\n              pass\n\nThe IDE offers to simplify `if x >= xmin and x <= xmax`.\nWhen the quick-fix is applied, the code changes to:\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if xmin <= x <= xmax:\n              pass\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
                   "level": "note",
                   "parameters": {
-                    "suppressToolId": "PyMethodParameters",
+                    "suppressToolId": "PyChainedComparisons",
                     "ideaSeverity": "WEAK WARNING",
                     "qodanaSeverity": "Moderate"
                   }
@@ -1012,19 +1012,19 @@
                 ]
               },
               {
-                "id": "PyChainedComparisonsInspection",
+                "id": "PyMethodParametersInspection",
                 "shortDescription": {
-                  "text": "Too complex chained comparisons"
+                  "text": "Improper first parameter"
                 },
                 "fullDescription": {
-                  "text": "Reports chained comparisons that can be simplified. Example: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if x >= xmin and x <= xmax:\n          pass' The IDE offers to simplify 'if x >= xmin and x <= xmax'. When the quick-fix is applied, the code changes to: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if xmin <= x <= xmax:\n          pass'",
-                  "markdown": "Reports chained comparisons that can be simplified.\n\n**Example:**\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if x >= xmin and x <= xmax:\n              pass\n\nThe IDE offers to simplify `if x >= xmin and x <= xmax`.\nWhen the quick-fix is applied, the code changes to:\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if xmin <= x <= xmax:\n              pass\n"
+                  "text": "Reports methods that lack the first parameter that is usually named 'self'. Example: 'class Movie:\n\n   def show():\n       pass' When the quick-fix is applied, the code changes to: 'class Movie:\n\n   def show(self):\n       pass' The inspection also reports naming issues in class methods. Example: 'class Movie:\n    @classmethod\n    def show(abc):\n        pass' Since the first parameter of a class method should be 'cls', the IDE provides a quick-fix to rename it.",
+                  "markdown": "Reports methods that lack the first parameter that is usually\nnamed `self`.\n\n**Example:**\n\n\n    class Movie:\n\n       def show():\n           pass\n\nWhen the quick-fix is applied, the code changes to:\n\n\n    class Movie:\n\n       def show(self):\n           pass\n\nThe inspection also reports naming issues in class methods.\n\n**Example:**\n\n\n    class Movie:\n        @classmethod\n        def show(abc):\n            pass\n\nSince the first parameter of a class method should be `cls`, the IDE provides a quick-fix\nto rename it."
                 },
                 "defaultConfiguration": {
                   "enabled": true,
                   "level": "note",
                   "parameters": {
-                    "suppressToolId": "PyChainedComparisons",
+                    "suppressToolId": "PyMethodParameters",
                     "ideaSeverity": "WEAK WARNING",
                     "qodanaSeverity": "Moderate"
                   }
@@ -1804,21 +1804,21 @@
                 ]
               },
               {
-                "id": "PyAbstractClassInspection",
+                "id": "PyOldStyleClassesInspection",
                 "shortDescription": {
-                  "text": "Class must implement all abstract methods"
+                  "text": "Old-style class contains new-style class features"
                 },
                 "fullDescription": {
-                  "text": "Reports cases when not all abstract properties or methods are defined in a subclass. Example: 'from abc import abstractmethod, ABC\n\n\nclass Figure(ABC):\n\n    @abstractmethod\n    def do_figure(self):\n        pass\n\n\nclass Triangle(Figure):\n    def do_triangle(self):\n        pass' When the quick-fix is applied, the IDE implements an abstract method for the 'Triangle' class: 'from abc import abstractmethod, ABC\n\n\nclass Figure(ABC):\n\n    @abstractmethod\n    def do_figure(self):\n        pass\n\n\nclass Triangle(Figure):\n    def do_figure(self):\n        pass\n\n    def do_triangle(self):\n        pass'",
-                  "markdown": "Reports cases when not all abstract properties or methods are defined in\na subclass.\n\n**Example:**\n\n\n    from abc import abstractmethod, ABC\n\n\n    class Figure(ABC):\n\n        @abstractmethod\n        def do_figure(self):\n            pass\n\n\n    class Triangle(Figure):\n        def do_triangle(self):\n            pass\n\nWhen the quick-fix is applied, the IDE implements an abstract method for the `Triangle` class:\n\n\n    from abc import abstractmethod, ABC\n\n\n    class Figure(ABC):\n\n        @abstractmethod\n        def do_figure(self):\n            pass\n\n\n    class Triangle(Figure):\n        def do_figure(self):\n            pass\n\n        def do_triangle(self):\n            pass\n"
+                  "text": "Reports occurrences of new-style class features in old-style classes. The inspection highlights '__slots__', '__getattribute__', and 'super()' inside old-style classes.",
+                  "markdown": "Reports occurrences of\n[new-style class features](https://www.python.org/doc/newstyle/)\nin old-style classes. The inspection highlights\n`__slots__`, `__getattribute__`, and `super()`\ninside old-style classes."
                 },
                 "defaultConfiguration": {
                   "enabled": true,
-                  "level": "note",
+                  "level": "warning",
                   "parameters": {
-                    "suppressToolId": "PyAbstractClass",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate"
+                    "suppressToolId": "PyOldStyleClasses",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
                   }
                 },
                 "relationships": [
@@ -1837,21 +1837,21 @@
                 ]
               },
               {
-                "id": "PyOldStyleClassesInspection",
+                "id": "PyAbstractClassInspection",
                 "shortDescription": {
-                  "text": "Old-style class contains new-style class features"
+                  "text": "Class must implement all abstract methods"
                 },
                 "fullDescription": {
-                  "text": "Reports occurrences of new-style class features in old-style classes. The inspection highlights '__slots__', '__getattribute__', and 'super()' inside old-style classes.",
-                  "markdown": "Reports occurrences of\n[new-style class features](https://www.python.org/doc/newstyle/)\nin old-style classes. The inspection highlights\n`__slots__`, `__getattribute__`, and `super()`\ninside old-style classes."
+                  "text": "Reports cases when not all abstract properties or methods are defined in a subclass. Example: 'from abc import abstractmethod, ABC\n\n\nclass Figure(ABC):\n\n    @abstractmethod\n    def do_figure(self):\n        pass\n\n\nclass Triangle(Figure):\n    def do_triangle(self):\n        pass' When the quick-fix is applied, the IDE implements an abstract method for the 'Triangle' class: 'from abc import abstractmethod, ABC\n\n\nclass Figure(ABC):\n\n    @abstractmethod\n    def do_figure(self):\n        pass\n\n\nclass Triangle(Figure):\n    def do_figure(self):\n        pass\n\n    def do_triangle(self):\n        pass'",
+                  "markdown": "Reports cases when not all abstract properties or methods are defined in\na subclass.\n\n**Example:**\n\n\n    from abc import abstractmethod, ABC\n\n\n    class Figure(ABC):\n\n        @abstractmethod\n        def do_figure(self):\n            pass\n\n\n    class Triangle(Figure):\n        def do_triangle(self):\n            pass\n\nWhen the quick-fix is applied, the IDE implements an abstract method for the `Triangle` class:\n\n\n    from abc import abstractmethod, ABC\n\n\n    class Figure(ABC):\n\n        @abstractmethod\n        def do_figure(self):\n            pass\n\n\n    class Triangle(Figure):\n        def do_figure(self):\n            pass\n\n        def do_triangle(self):\n            pass\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
-                  "level": "warning",
+                  "level": "note",
                   "parameters": {
-                    "suppressToolId": "PyOldStyleClasses",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
+                    "suppressToolId": "PyAbstractClass",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate"
                   }
                 },
                 "relationships": [
@@ -4051,39 +4051,6 @@
                 ]
               },
               {
-                "id": "XmlDuplicatedId",
-                "shortDescription": {
-                  "text": "Duplicate 'id' attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a duplicate 'id' attribute in XML.",
-                  "markdown": "Reports a duplicate `id` attribute in XML."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "XmlDuplicatedId",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "XML",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "JsonSchemaDeprecation",
                 "shortDescription": {
                   "text": "Deprecated JSON property"
@@ -4106,6 +4073,39 @@
                     "target": {
                       "id": "JSON and JSON5",
                       "index": 5,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "XmlDuplicatedId",
+                "shortDescription": {
+                  "text": "Duplicate 'id' attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a duplicate 'id' attribute in XML.",
+                  "markdown": "Reports a duplicate `id` attribute in XML."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "XmlDuplicatedId",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "XML",
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -5140,39 +5140,6 @@
                 ]
               },
               {
-                "id": "RegExpRedundantNestedCharacterClass",
-                "shortDescription": {
-                  "text": "Redundant nested character class"
-                },
-                "fullDescription": {
-                  "text": "Reports unnecessary nested character classes. Example: '[a-c[x-z]]' After the quick-fix is applied: '[a-cx-z]' New in 2020.2",
-                  "markdown": "Reports unnecessary nested character classes.\n\n**Example:**\n\n\n      [a-c[x-z]]\n\nAfter the quick-fix is applied:\n\n\n      [a-cx-z]\n\nNew in 2020.2"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "RegExpRedundantNestedCharacterClass",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "RegExp",
-                      "index": 6,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "XmlDeprecatedElement",
                 "shortDescription": {
                   "text": "Deprecated symbol"
@@ -5195,6 +5162,39 @@
                     "target": {
                       "id": "XML",
                       "index": 3,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RegExpRedundantNestedCharacterClass",
+                "shortDescription": {
+                  "text": "Redundant nested character class"
+                },
+                "fullDescription": {
+                  "text": "Reports unnecessary nested character classes. Example: '[a-c[x-z]]' After the quick-fix is applied: '[a-cx-z]' New in 2020.2",
+                  "markdown": "Reports unnecessary nested character classes.\n\n**Example:**\n\n\n      [a-c[x-z]]\n\nAfter the quick-fix is applied:\n\n\n      [a-cx-z]\n\nNew in 2020.2"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "RegExpRedundantNestedCharacterClass",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "RegExp",
+                      "index": 6,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -5338,39 +5338,6 @@
                 ]
               },
               {
-                "id": "HtmlExtraClosingTag",
-                "shortDescription": {
-                  "text": "Redundant closing tag"
-                },
-                "fullDescription": {
-                  "text": "Reports redundant closing tags on empty elements, for example, 'img' or 'br'. Example: '<html>\n    <body>\n      <br></br>\n    </body>\n  </html>' After the quick-fix is applied: '<html>\n    <body>\n      <br>\n    </body>\n  </html>'",
-                  "markdown": "Reports redundant closing tags on empty elements, for example, `img` or `br`.\n\n**Example:**\n\n\n      <html>\n        <body>\n          <br></br>\n        </body>\n      </html>\n\nAfter the quick-fix is applied:\n\n\n      <html>\n        <body>\n          <br>\n        </body>\n      </html>\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "HtmlExtraClosingTag",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "HTML",
-                      "index": 8,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RegExpOctalEscape",
                 "shortDescription": {
                   "text": "Octal escape"
@@ -5393,6 +5360,39 @@
                     "target": {
                       "id": "RegExp",
                       "index": 6,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "HtmlExtraClosingTag",
+                "shortDescription": {
+                  "text": "Redundant closing tag"
+                },
+                "fullDescription": {
+                  "text": "Reports redundant closing tags on empty elements, for example, 'img' or 'br'. Example: '<html>\n    <body>\n      <br></br>\n    </body>\n  </html>' After the quick-fix is applied: '<html>\n    <body>\n      <br>\n    </body>\n  </html>'",
+                  "markdown": "Reports redundant closing tags on empty elements, for example, `img` or `br`.\n\n**Example:**\n\n\n      <html>\n        <body>\n          <br></br>\n        </body>\n      </html>\n\nAfter the quick-fix is applied:\n\n\n      <html>\n        <body>\n          <br>\n        </body>\n      </html>\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "HtmlExtraClosingTag",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "HTML",
+                      "index": 8,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -6675,7 +6675,7 @@
       },
       "invocations": [
         {
-          "startTimeUtc": "2024-02-14T18:51:51.299961335Z",
+          "startTimeUtc": "2024-02-15T22:28:22.98829332Z",
           "exitCode": 0,
           "toolExecutionNotifications": [
             {
@@ -6683,7 +6683,7 @@
                 "text": "Analysis by sanity inspection \"Unresolved references\" was suspended due to high number of problems."
               },
               "level": "error",
-              "timeUtc": "2024-02-14T18:51:53.628299791Z",
+              "timeUtc": "2024-02-15T22:28:25.532817286Z",
               "properties": {
                 "qodanaKind": "sanityFailure"
               }
@@ -6696,237 +6696,17 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/siberianbearofficial/bmstu-cg-sem-4.git",
-          "revisionId": "6682686a702e433741650786d6daa8b8f9107cd6",
+          "revisionId": "8e2c7cfe390ada228616e9eafe01a815c2925ea9",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4.git",
             "lastAuthorName": "Aleksei Orlov",
             "vcsType": "Git",
-            "lastAuthorEmail": "61984103+siberianbearofficial@users.noreply.github.com"
+            "lastAuthorEmail": "alexeyorlov65@gmail.com"
           }
         }
       ],
       "results": [
-        {
-          "ruleId": "PyBroadExceptionInspection",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Too broad exception clause",
-            "markdown": "Too broad exception clause"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "lab_01/points.py",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 108,
-                  "startColumn": 21,
-                  "charOffset": 3421,
-                  "charLength": 6,
-                  "snippet": {
-                    "text": "except"
-                  },
-                  "sourceLanguage": "Python"
-                },
-                "contextRegion": {
-                  "startLine": 106,
-                  "startColumn": 1,
-                  "charOffset": 3310,
-                  "charLength": 148,
-                  "snippet": {
-                    "text": "                            max_triangle = t\n                            max_point = point\n                    except:\n                        pass\n"
-                  },
-                  "sourceLanguage": "Python"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "project",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v1": "3b42b4ff392271fd4c0ecbb1c4cbdf206d0b454f09d75cc527de0b426c3f7233"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "tags": [
-              "Python"
-            ]
-          }
-        },
-        {
-          "ruleId": "PyMethodMayBeStaticInspection",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Method 'task' may be 'static'",
-            "markdown": "Method `task` may be 'static'"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "lab_01/main.py",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 63,
-                  "startColumn": 9,
-                  "charOffset": 2152,
-                  "charLength": 4,
-                  "snippet": {
-                    "text": "task"
-                  },
-                  "sourceLanguage": "Python"
-                },
-                "contextRegion": {
-                  "startLine": 61,
-                  "startColumn": 1,
-                  "charOffset": 2079,
-                  "charLength": 156,
-                  "snippet": {
-                    "text": "                                      QTableWidgetItem(str(y)))\n\n    def task(self):\n        msgbox = QMessageBox()\n        msgbox.setWindowTitle(\"Условие\")"
-                  },
-                  "sourceLanguage": "Python"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "project",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v1": "23d481e07963362f9d26b617a1ddad274855397bc86c32cd58b93fd42fa925d6"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "tags": [
-              "Python"
-            ]
-          }
-        },
-        {
-          "ruleId": "PyMethodMayBeStaticInspection",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Method 'no_triangle' may be 'static'",
-            "markdown": "Method `no_triangle` may be 'static'"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "lab_01/main.py",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 98,
-                  "startColumn": 9,
-                  "charOffset": 3314,
-                  "charLength": 11,
-                  "snippet": {
-                    "text": "no_triangle"
-                  },
-                  "sourceLanguage": "Python"
-                },
-                "contextRegion": {
-                  "startLine": 96,
-                  "startColumn": 1,
-                  "charOffset": 3283,
-                  "charLength": 135,
-                  "snippet": {
-                    "text": "        msgbox.exec()\n\n    def no_triangle(self):\n        msgbox = QMessageBox()\n        msgbox.setText(\"Все треугольники вырожденные\")"
-                  },
-                  "sourceLanguage": "Python"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "project",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v1": "3785f52653b549be7f4cd356efa4614f317aeebd0cccfff069ca0c92eaf3fb54"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "tags": [
-              "Python"
-            ]
-          }
-        },
-        {
-          "ruleId": "PyMethodMayBeStaticInspection",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Method 'not_enough_points' may be 'static'",
-            "markdown": "Method `not_enough_points` may be 'static'"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "lab_01/main.py",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 93,
-                  "startColumn": 9,
-                  "charOffset": 3166,
-                  "charLength": 17,
-                  "snippet": {
-                    "text": "not_enough_points"
-                  },
-                  "sourceLanguage": "Python"
-                },
-                "contextRegion": {
-                  "startLine": 91,
-                  "startColumn": 1,
-                  "charOffset": 3126,
-                  "charLength": 156,
-                  "snippet": {
-                    "text": "            self.no_triangle()\n\n    def not_enough_points(self):\n        msgbox = QMessageBox()\n        msgbox.setText(\"Минимальное число разных точек - 3\")"
-                  },
-                  "sourceLanguage": "Python"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "project",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v1": "b34a55dab346251295e1f30a3bbdcfd60b5ffe242925d6cb563a421f8ea7a746"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "tags": [
-              "Python"
-            ]
-          }
-        },
         {
           "ruleId": "PyPep8NamingInspection",
           "kind": "fail",
@@ -6943,9 +6723,9 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 47,
+                  "startLine": 51,
                   "startColumn": 9,
-                  "charOffset": 1356,
+                  "charOffset": 1566,
                   "charLength": 11,
                   "snippet": {
                     "text": "resizeEvent"
@@ -6953,9 +6733,9 @@
                   "sourceLanguage": "Python"
                 },
                 "contextRegion": {
-                  "startLine": 45,
+                  "startLine": 49,
                   "startColumn": 1,
-                  "charOffset": 1319,
+                  "charOffset": 1529,
                   "charLength": 120,
                   "snippet": {
                     "text": "        self._painter.end()\n\n    def resizeEvent(self, a0) -> None:\n        self.scale()\n        super().resizeEvent(a0)"
@@ -6972,7 +6752,7 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v1": "1f1d968f1857a8603b25856998ced6b4de2e8595dbdd18e34571238f47296945"
+            "equalIndicator/v1": "2bd4a2f0b675b37ade5114b05f055875125a80d4224d4b7a1d4019b77bbeb2dc"
           },
           "properties": {
             "ideaSeverity": "WEAK WARNING",
@@ -6998,9 +6778,9 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 32,
+                  "startLine": 37,
                   "startColumn": 9,
-                  "charOffset": 800,
+                  "charOffset": 1024,
                   "charLength": 10,
                   "snippet": {
                     "text": "paintEvent"
@@ -7008,12 +6788,12 @@
                   "sourceLanguage": "Python"
                 },
                 "contextRegion": {
-                  "startLine": 30,
+                  "startLine": 35,
                   "startColumn": 1,
-                  "charOffset": 769,
-                  "charLength": 95,
+                  "charOffset": 993,
+                  "charLength": 125,
                   "snippet": {
-                    "text": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        self._painter.begin(self)\n"
+                    "text": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        super().paintEvent(a0)\n        self._painter.begin(self)"
                   },
                   "sourceLanguage": "Python"
                 }
@@ -7027,7 +6807,7 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v1": "66b64d2bce35d281b7106c902bf5c89613a82fe6208fdd05a73d998a84d6fc1b"
+            "equalIndicator/v1": "324e9018dbfed94732ce77498db08c1e085329ec25b22ade4bea3998cff9bd9c"
           },
           "properties": {
             "ideaSeverity": "WEAK WARNING",
@@ -7038,37 +6818,37 @@
           }
         },
         {
-          "ruleId": "PyUnusedLocalInspection",
+          "ruleId": "PyPep8NamingInspection",
           "kind": "fail",
           "level": "note",
           "message": {
-            "text": "Parameter 'a0' value is not used",
-            "markdown": "Parameter 'a0' value is not used"
+            "text": "Function name should be lowercase",
+            "markdown": "Function name should be lowercase"
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "lab_01/canvas.py",
+                  "uri": "lab_01/points_table.py",
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 32,
-                  "startColumn": 26,
-                  "charOffset": 817,
-                  "charLength": 2,
+                  "startLine": 36,
+                  "startColumn": 9,
+                  "charOffset": 1351,
+                  "charLength": 21,
                   "snippet": {
-                    "text": "a0"
+                    "text": "mouseDoubleClickEvent"
                   },
                   "sourceLanguage": "Python"
                 },
                 "contextRegion": {
-                  "startLine": 30,
+                  "startLine": 34,
                   "startColumn": 1,
-                  "charOffset": 769,
-                  "charLength": 95,
+                  "charOffset": 1302,
+                  "charLength": 180,
                   "snippet": {
-                    "text": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        self._painter.begin(self)\n"
+                    "text": "        layout.addWidget(delete_button)\n\n    def mouseDoubleClickEvent(self, a0):\n        super().mouseDoubleClickEvent(a0)\n        dialog = PointDialog(self.point.x, self.point.y)"
                   },
                   "sourceLanguage": "Python"
                 }
@@ -7082,7 +6862,7 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v1": "5f4337df824d99b78d8d9458511d093462267d1d301e8b4ead4920bfaba567d4"
+            "equalIndicator/v1": "4912eb39668b15da8f6281fc3aea6dc5ca1deed95b5fa934cfad1566c997cc66"
           },
           "properties": {
             "ideaSeverity": "WEAK WARNING",
@@ -7094,10 +6874,10 @@
         }
       ],
       "automationDetails": {
-        "id": "project/qodana/2024-02-14",
-        "guid": "3c896756-6a12-4c07-955b-3e5240d44691",
+        "id": "project/qodana/2024-02-15",
+        "guid": "f5fdf6e5-705f-45d8-b27d-3f91c652e1ca",
         "properties": {
-          "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/7905859429"
+          "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/7923120555"
         }
       },
       "newlineSequences": [
@@ -7170,16 +6950,16 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/figures/triangle.py",
+                    "uri": "lab_01/main.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 851,
+                    "charLength": 82,
                     "snippet": {
-                      "text": "from figures.line import Line\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1, p2, p3):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n    def heights_intersection(self):\r\n        h1 = Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n        h2 = Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n        return h1.intersection(h2)\r\n\r\n\r\ndef find_triangle(points: list):\r\n    max_sum = 0\r\n    res = None\r\n    for p1 in points:\r\n        for p2 in points:\r\n            if p1 == p2:\r\n                continue\r\n            for p3 in points:\r\n                if p1 == p3 or p2 == p3:\r\n                    continue\r\n\r\n                tr = Triangle(p1, p2, p3)\r\n                point = tr.heights_intersection()\r\n                if sum(point) > max_sum:\r\n                    max_sum = sum(point)\r\n                    r"
+                      "text": "\"\"\"\nЛабораторная работа №1 по курсу \"Компьютерная Графика\"\nОрлов Алексей (ИУ7-34Б)"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7187,9 +6967,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 883,
+                    "charLength": 87,
                     "snippet": {
-                      "text": "from figures.line import Line\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1, p2, p3):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n    def heights_intersection(self):\r\n        h1 = Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n        h2 = Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n        return h1.intersection(h2)\r\n\r\n\r\ndef find_triangle(points: list):\r\n    max_sum = 0\r\n    res = None\r\n    for p1 in points:\r\n        for p2 in points:\r\n            if p1 == p2:\r\n                continue\r\n            for p3 in points:\r\n                if p1 == p3 or p2 == p3:\r\n                    continue\r\n\r\n                tr = Triangle(p1, p2, p3)\r\n                point = tr.heights_intersection()\r\n                if sum(point) > max_sum:\r\n                    max_sum = sum(point)\r\n                    res = tr, point\r\n    return res\r\n"
+                      "text": "\"\"\"\nЛабораторная работа №1 по курсу \"Компьютерная Графика\"\nОрлов Алексей (ИУ7-34Б)\n\"\"\"\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7203,59 +6983,7 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "1af4c88dca5ac6b487db22a6bf52db62e4d99a13b827d017596fa48e30ba8a77"
-            },
-            "properties": {
-              "ideaSeverity": "WARNING",
-              "qodanaSeverity": "High"
-            }
-          },
-          {
-            "ruleId": "PyInterpreterInspection",
-            "kind": "fail",
-            "level": "warning",
-            "message": {
-              "text": "No Python interpreter configured for the project",
-              "markdown": "No Python interpreter configured for the project"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/points.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 29,
-                    "snippet": {
-                      "text": "from math import fabs, sqrt\n\n"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 76,
-                    "snippet": {
-                      "text": "from math import fabs, sqrt\n\n\nclass NoTriangleException(Exception):\n    pass"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "37a154598b5153ea938d0e040f904d4c2a85d5e2efa61f9ef7252bad33ecb2c6"
+              "equalIndicator/v1": "33a73babab6d8c7efedd19351ee3bb7ae40ac702c4f7b9b4a11f38144cd20029"
             },
             "properties": {
               "ideaSeverity": "WARNING",
@@ -7281,9 +7009,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 114,
+                    "charLength": 127,
                     "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget"
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7291,9 +7019,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 145,
+                    "charLength": 158,
                     "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget\n\nfrom figures.line import Line"
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy\n\nfrom figures.line import Line"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7307,7 +7035,59 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "677ec01c612cfde81518004014f60452ce3b7f4e12563c57685ee1cdb459b5f2"
+              "equalIndicator/v1": "54b4b8144361cc2159c2f1cbe25ee4859c179b2560cc899e7431a0bf5f8bb606"
+            },
+            "properties": {
+              "ideaSeverity": "WARNING",
+              "qodanaSeverity": "High"
+            }
+          },
+          {
+            "ruleId": "PyInterpreterInspection",
+            "kind": "fail",
+            "level": "warning",
+            "message": {
+              "text": "No Python interpreter configured for the project",
+              "markdown": "No Python interpreter configured for the project"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/points_table.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 168,
+                    "snippet": {
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 206,
+                    "snippet": {
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n\nfrom point_dialog import PointDialog"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "8d38e60617d66a1883453fe7ef2cf3d0deb95a1745a7fde9b010a4022df5b4fd"
             },
             "properties": {
               "ideaSeverity": "WARNING",
@@ -7378,16 +7158,16 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/main.py",
+                    "uri": "lab_01/figures/triangle.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 163,
+                    "charLength": 4118,
                     "snippet": {
-                      "text": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication"
+                      "text": "from math import sqrt, atan\r\nfrom figures.line import Line\r\nfrom figures.point import Point\r\n\r\n\r\nclass NoTriangleException(Exception):\r\n    pass\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1: Point, p2: Point, p3: Point):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n        self.s1 = sqrt((p3.x - p2.x) ** 2 + (p3.y - p2.y) ** 2)\r\n        self.s2 = sqrt((p3.x - p1.x) ** 2 + (p3.y - p1.y) ** 2)\r\n        self.s3 = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n\r\n        p = (self.s1 + self.s2 + self.s3) / 2\r\n        self.area = sqrt(p * (p - self.s1) * (p - self.s2) * (p - self.s3))\r\n\r\n        if self.area < 1e-6:\r\n            raise NoTriangleException\r\n\r\n    def height(self, point: Point):\r\n        match point:\r\n            case self.p1:\r\n                return Line.from_points(self.p2, self.p3).perpendicular(self.p1)\r\n            case self.p2:\r\n                return Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n            case _:\r\n                return Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n\r\n    def __bisector_height_angle(self, point: Point):\r\n        \"\"\"\r\n        Угол между биссектрисой и высотой из вершины point.\r\n        :param point: вершина для нахождения угла.\r\n        :return: найденный угол, биссектриса и высота из вершины point.\r\n        \"\"\"\r\n\r\n        points = [self.p1, self.p2, self.p3]\r\n        points.remove(point)\r\n\r\n        height = Line.from_points(*points).perpendicular(point)\r\n\r\n        a, b = points[0], points[1]\r\n        a_point_len = sqrt((a.x - point.x) ** 2 + (a.y - point.y) ** 2)\r\n        b_point_len = sqrt((b.x - point.x) ** 2 + (b.y - point.y) ** 2)\r\n        p = Point(point.x + (b.x - point.x) / b_point_len * a_point_len,\r\n                  point.y + (b.y - point.y) / b_point_len * a_point_len)\r\n        line_a_perp = Line.from_points(point, a).perpendicular(a)\r\n        line_b_perp = Line.from_points(point, b).perpendicular(p)\r\n        line_ab = Line.from_points(a, b)\r\n\r\n        bisector = Line.from_points(point, line_a_perp.intersection(line_b_perp))\r\n\r\n        p1 = bisector.intersection(line_ab)\r\n        p2 = height.intersection(line_ab)\r\n        p12_distance = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n        height_distance = sqrt((point.x - p2.x) ** 2 + (point.y - p2.y) ** 2)\r\n\r\n        return atan(p12_distance / height_distance), bisector, height\r\n\r\n    def max_bisector_height_angle(self):\r\n        \"\"\"\r\n        Максимальный угол между биссектрисой и высотой.\r\n        :return: найденный угол, вершина, биссектриса и высота из этой вершины.\r\n        \"\"\"\r\n\r\n        res1, bis1, hgt1 = self.__bisector_height_angle(self.p1)\r\n        res2, bis2, hgt2 = self.__bisector_height_angle(self.p2)\r\n        res3, bis3, hgt3 = self.__bisector_height_angle(self.p3)\r\n\r\n        if res1 > res2 and res1 > res3:\r\n            return res1, self.p1, bis1, hgt1\r\n        if res2 > res1 and res2 > res3:\r\n            return res2, self.p2, bis2, hgt2\r\n        return res3, self.p3, bis3, hgt3\r\n\r\n    @staticmethod\r\n    def with_max_bisector_height_angle(points: list[Point]):\r\n        max_bisector_height_angle = None\r\n        max_triangle = None\r\n        max_point = None\r\n        max_bisector = None\r\n        max_height = None\r\n\r\n        for i in range(len(points) - 2):\r\n            for j in range(i + 1, len(points) - 1):\r\n                for k in range(j + 1, len(points)):\r\n                    try:\r\n                        triangle = Triangle(points[i], points[j], points[k])\r\n\r\n                        bisector_height_angle, point, bisector, height = triangle.max_bisector_height_angle()\r\n                        if not max_bisector_height_angle or bisector_height_angle > max_bisector_height_angle:\r\n                            max_bisector_height_angle = bisector_height_angle\r\n                            max_triangle = triangle\r\n                            max_point = point\r\n                            max_bisector = bisector\r\n                            max_height = height\r\n                    except NoTriangleException:\r\n                        pass\r\n\r\n        if not max_triangle:\r"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7395,9 +7175,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 190,
+                    "charLength": 4118,
                     "snippet": {
-                      "text": "import sys\nfrom PyQt6.QtWidgets import QTableWidgetItem, QMainWindow, QTableWidget, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication\n\nfrom canvas import Canvas"
+                      "text": "from math import sqrt, atan\r\nfrom figures.line import Line\r\nfrom figures.point import Point\r\n\r\n\r\nclass NoTriangleException(Exception):\r\n    pass\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1: Point, p2: Point, p3: Point):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n        self.s1 = sqrt((p3.x - p2.x) ** 2 + (p3.y - p2.y) ** 2)\r\n        self.s2 = sqrt((p3.x - p1.x) ** 2 + (p3.y - p1.y) ** 2)\r\n        self.s3 = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n\r\n        p = (self.s1 + self.s2 + self.s3) / 2\r\n        self.area = sqrt(p * (p - self.s1) * (p - self.s2) * (p - self.s3))\r\n\r\n        if self.area < 1e-6:\r\n            raise NoTriangleException\r\n\r\n    def height(self, point: Point):\r\n        match point:\r\n            case self.p1:\r\n                return Line.from_points(self.p2, self.p3).perpendicular(self.p1)\r\n            case self.p2:\r\n                return Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n            case _:\r\n                return Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n\r\n    def __bisector_height_angle(self, point: Point):\r\n        \"\"\"\r\n        Угол между биссектрисой и высотой из вершины point.\r\n        :param point: вершина для нахождения угла.\r\n        :return: найденный угол, биссектриса и высота из вершины point.\r\n        \"\"\"\r\n\r\n        points = [self.p1, self.p2, self.p3]\r\n        points.remove(point)\r\n\r\n        height = Line.from_points(*points).perpendicular(point)\r\n\r\n        a, b = points[0], points[1]\r\n        a_point_len = sqrt((a.x - point.x) ** 2 + (a.y - point.y) ** 2)\r\n        b_point_len = sqrt((b.x - point.x) ** 2 + (b.y - point.y) ** 2)\r\n        p = Point(point.x + (b.x - point.x) / b_point_len * a_point_len,\r\n                  point.y + (b.y - point.y) / b_point_len * a_point_len)\r\n        line_a_perp = Line.from_points(point, a).perpendicular(a)\r\n        line_b_perp = Line.from_points(point, b).perpendicular(p)\r\n        line_ab = Line.from_points(a, b)\r\n\r\n        bisector = Line.from_points(point, line_a_perp.intersection(line_b_perp))\r\n\r\n        p1 = bisector.intersection(line_ab)\r\n        p2 = height.intersection(line_ab)\r\n        p12_distance = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n        height_distance = sqrt((point.x - p2.x) ** 2 + (point.y - p2.y) ** 2)\r\n\r\n        return atan(p12_distance / height_distance), bisector, height\r\n\r\n    def max_bisector_height_angle(self):\r\n        \"\"\"\r\n        Максимальный угол между биссектрисой и высотой.\r\n        :return: найденный угол, вершина, биссектриса и высота из этой вершины.\r\n        \"\"\"\r\n\r\n        res1, bis1, hgt1 = self.__bisector_height_angle(self.p1)\r\n        res2, bis2, hgt2 = self.__bisector_height_angle(self.p2)\r\n        res3, bis3, hgt3 = self.__bisector_height_angle(self.p3)\r\n\r\n        if res1 > res2 and res1 > res3:\r\n            return res1, self.p1, bis1, hgt1\r\n        if res2 > res1 and res2 > res3:\r\n            return res2, self.p2, bis2, hgt2\r\n        return res3, self.p3, bis3, hgt3\r\n\r\n    @staticmethod\r\n    def with_max_bisector_height_angle(points: list[Point]):\r\n        max_bisector_height_angle = None\r\n        max_triangle = None\r\n        max_point = None\r\n        max_bisector = None\r\n        max_height = None\r\n\r\n        for i in range(len(points) - 2):\r\n            for j in range(i + 1, len(points) - 1):\r\n                for k in range(j + 1, len(points)):\r\n                    try:\r\n                        triangle = Triangle(points[i], points[j], points[k])\r\n\r\n                        bisector_height_angle, point, bisector, height = triangle.max_bisector_height_angle()\r\n                        if not max_bisector_height_angle or bisector_height_angle > max_bisector_height_angle:\r\n                            max_bisector_height_angle = bisector_height_angle\r\n                            max_triangle = triangle\r\n                            max_point = point\r\n                            max_bisector = bisector\r\n                            max_height = height\r\n                    except NoTriangleException:\r\n                        pass\r\n\r\n        if not max_triangle:\r"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7411,7 +7191,7 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "c93586cc16b961c632475480368d286266a819b1f9710bdb0fc33ebff4b356aa"
+              "equalIndicator/v1": "e01727c7da8ce40d554f50aad926ee644d91fe22348b301d25757a993ca5f971"
             },
             "properties": {
               "ideaSeverity": "WARNING",
@@ -7437,9 +7217,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 1293,
+                    "charLength": 1231,
                     "snippet": {
-                      "text": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        main_layout = QVBoxLayout()\r\n        self.setLayout(main_layout)\r\n\r\n        main_layout.addWidget(QLabel(\"Координата X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        main_layout.addWidget(self._x_edit)\r\n\r\n        main_layout.addWidget(QLabel(\"Координата Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        main_layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        main_layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return sel"
+                      "text": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        layout = QVBoxLayout(self)\r\n\r\n        layout.addWidget(QLabel(\"Координата X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        layout.addWidget(self._x_edit)\r\n\r\n        layout.addWidget(QLabel(\"Координата Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return self"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7447,9 +7227,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 1334,
+                    "charLength": 1271,
                     "snippet": {
-                      "text": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        main_layout = QVBoxLayout()\r\n        self.setLayout(main_layout)\r\n\r\n        main_layout.addWidget(QLabel(\"Координата X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        main_layout.addWidget(self._x_edit)\r\n\r\n        main_layout.addWidget(QLabel(\"Координата Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        main_layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        main_layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return self._x_edit.value(), self._y_edit.value()\r\n"
+                      "text": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        layout = QVBoxLayout(self)\r\n\r\n        layout.addWidget(QLabel(\"Координата X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        layout.addWidget(self._x_edit)\r\n\r\n        layout.addWidget(QLabel(\"Координата Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return self._x_edit.value(), self._y_edit.value()\r\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7463,115 +7243,11 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "f6e0c5c28e296013bf08c9673190769171325b0bcf00863ed9e1be5b6c51ac0c"
+              "equalIndicator/v1": "e4b48912f8e0cfeec99c4495d0e1976e381ac6bd98989b74d1be8973875fa839"
             },
             "properties": {
               "ideaSeverity": "WARNING",
               "qodanaSeverity": "High"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'list'",
-              "markdown": "Unresolved reference 'list'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/figures/triangle.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 16,
-                    "startColumn": 27,
-                    "charOffset": 404,
-                    "charLength": 4,
-                    "snippet": {
-                      "text": "list"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 14,
-                    "startColumn": 1,
-                    "charOffset": 374,
-                    "charLength": 70,
-                    "snippet": {
-                      "text": "\r\n\r\ndef find_triangle(points: list):\r\n    max_sum = 0\r\n    res = None\r"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "01b1eb5440d3f9761ae2fadfeb31872506cc88ca83f9db1b8ec861d0f4a9c5d2"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'figures'",
-              "markdown": "Unresolved reference 'figures'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/figures/triangle.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 6,
-                    "charOffset": 5,
-                    "charLength": 7,
-                    "snippet": {
-                      "text": "figures"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 34,
-                    "snippet": {
-                      "text": "from figures.line import Line\r\n\r\n\r"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "0d9434f9673b767c3b004529b5135bed65da743b02402c6e00efc400b471978f"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
             }
           },
           {
@@ -7603,9 +7279,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 115,
+                    "charLength": 128,
                     "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget\n"
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7619,7 +7295,7 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "345c5fccbfb8d817231b1505875d8aba3c40d93058a647873629ae7f057e77ec"
+              "equalIndicator/v1": "254e1e0bf5520f03a8cdd60235a76f8054fd3536afa255588fa548e21f761d54"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -7631,23 +7307,23 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'sqrt'",
-              "markdown": "Unresolved reference 'sqrt'"
+              "text": "Unresolved reference 'PyQt6'",
+              "markdown": "Unresolved reference 'PyQt6'"
             },
             "locations": [
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/points.py",
+                    "uri": "lab_01/points_table.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
-                    "startLine": 1,
-                    "startColumn": 24,
-                    "charOffset": 23,
-                    "charLength": 4,
+                    "startLine": 2,
+                    "startColumn": 6,
+                    "charOffset": 33,
+                    "charLength": 5,
                     "snippet": {
-                      "text": "sqrt"
+                      "text": "PyQt6"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7655,9 +7331,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 29,
+                    "charLength": 169,
                     "snippet": {
-                      "text": "from math import fabs, sqrt\n\n"
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7671,7 +7347,59 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "384250c02a8844cc0c527efa7562b04497c4185b727f0d6579855444a1e9d2f6"
+              "equalIndicator/v1": "4fb89af274e3a6ad3be7c9aa628ccf65e2c074ddc943ce40d635803bb6dd55c5"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'Qt'",
+              "markdown": "Unresolved reference 'Qt'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/main.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 8,
+                    "startColumn": 26,
+                    "charOffset": 125,
+                    "charLength": 2,
+                    "snippet": {
+                      "text": "Qt"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "charOffset": 88,
+                    "charLength": 173,
+                    "snippet": {
+                      "text": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "50d24821625f983f5f3d589a57fada869632d84aeb0557afd58aee3c55afa64c"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -7735,23 +7463,23 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'Line'",
-              "markdown": "Unresolved reference 'Line'"
+              "text": "Unresolved reference 'QPoint'",
+              "markdown": "Unresolved reference 'QPoint'"
             },
             "locations": [
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/figures/triangle.py",
+                    "uri": "lab_01/canvas.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
                     "startColumn": 26,
                     "charOffset": 25,
-                    "charLength": 4,
+                    "charLength": 6,
                     "snippet": {
-                      "text": "Line"
+                      "text": "QPoint"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7759,9 +7487,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 34,
+                    "charLength": 127,
                     "snippet": {
-                      "text": "from figures.line import Line\r\n\r\n\r"
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7775,163 +7503,7 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "5963c40b13eab0179763b294642a3773afd360cfce11c7d83796af89e4608a4a"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'PyQt6'",
-              "markdown": "Unresolved reference 'PyQt6'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/canvas.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 6,
-                    "charOffset": 5,
-                    "charLength": 5,
-                    "snippet": {
-                      "text": "PyQt6"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 114,
-                    "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "5ba7771691008ef4b12fdba969a3bb7717f1db977fb4cb615fc79f5626c64c56"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'sum'",
-              "markdown": "Unresolved reference 'sum'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/figures/triangle.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 29,
-                    "startColumn": 20,
-                    "charOffset": 765,
-                    "charLength": 3,
-                    "snippet": {
-                      "text": "sum"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 27,
-                    "startColumn": 1,
-                    "charOffset": 652,
-                    "charLength": 214,
-                    "snippet": {
-                      "text": "                tr = Triangle(p1, p2, p3)\r\n                point = tr.heights_intersection()\r\n                if sum(point) > max_sum:\r\n                    max_sum = sum(point)\r\n                    res = tr, point\r"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "5d28e318a9796c5bfc032daff4a34bc6bff975bb4350f41490fe067bff567540"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'QPainter'",
-              "markdown": "Unresolved reference 'QPainter'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/canvas.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 2,
-                    "startColumn": 25,
-                    "charOffset": 56,
-                    "charLength": 8,
-                    "snippet": {
-                      "text": "QPainter"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 115,
-                    "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget\n"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "6a66bc4cb842f0f94f46e9059e50d1342af029ab90ff9750460d9332ecc19b43"
+              "equalIndicator/v1": "679698b59d776d6859e35e6efcd42584b14acad05af05388e27c0989429f3788"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -8047,58 +7619,6 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'Exception'",
-              "markdown": "Unresolved reference 'Exception'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/points.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 4,
-                    "startColumn": 27,
-                    "charOffset": 56,
-                    "charLength": 9,
-                    "snippet": {
-                      "text": "Exception"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 2,
-                    "startColumn": 1,
-                    "charOffset": 28,
-                    "charLength": 49,
-                    "snippet": {
-                      "text": "\n\nclass NoTriangleException(Exception):\n    pass\n"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "871aadc2e39abadecd1f897e69f4ab56d6f704fafc79b0a2e36d4bc655f14d62"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
               "text": "Unresolved reference 'int'",
               "markdown": "Unresolved reference 'int'"
             },
@@ -8140,58 +7660,6 @@
             ],
             "partialFingerprints": {
               "equalIndicator/v1": "8f2a09dcd88dcdcfe8a67b8c23d91de0915c9526558e7ee7ba219fcb5a79f9b5"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'QPoint'",
-              "markdown": "Unresolved reference 'QPoint'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_01/canvas.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 26,
-                    "charOffset": 25,
-                    "charLength": 6,
-                    "snippet": {
-                      "text": "QPoint"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 114,
-                    "snippet": {
-                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "8fa2b9d98d7baad194da8b8a1990781d8ccf2357ce2793085dcd01f6830529ac"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -8255,6 +7723,58 @@
             "kind": "fail",
             "level": "error",
             "message": {
+              "text": "Unresolved reference 'PyQt6'",
+              "markdown": "Unresolved reference 'PyQt6'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/main.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 9,
+                    "startColumn": 6,
+                    "charOffset": 133,
+                    "charLength": 5,
+                    "snippet": {
+                      "text": "PyQt6"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 7,
+                    "startColumn": 1,
+                    "charOffset": 99,
+                    "charLength": 163,
+                    "snippet": {
+                      "text": "\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "9db0ecc8ffbd16cca01a775b9679914156fd3535b8d8d0249f64674b2c99b0b8"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
               "text": "Unresolved reference 'isinstance'",
               "markdown": "Unresolved reference 'isinstance'"
             },
@@ -8307,23 +7827,23 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'fabs'",
-              "markdown": "Unresolved reference 'fabs'"
+              "text": "Unresolved reference 'PyQt6'",
+              "markdown": "Unresolved reference 'PyQt6'"
             },
             "locations": [
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/points.py",
+                    "uri": "lab_01/points_table.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
-                    "startColumn": 18,
-                    "charOffset": 17,
-                    "charLength": 4,
+                    "startColumn": 6,
+                    "charOffset": 5,
+                    "charLength": 5,
                     "snippet": {
-                      "text": "fabs"
+                      "text": "PyQt6"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -8331,9 +7851,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 29,
+                    "charLength": 168,
                     "snippet": {
-                      "text": "from math import fabs, sqrt\n\n"
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -8347,7 +7867,111 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "a97d7222105c01140c67addf4577aff504634d6c1c37706e6f3ceba4f54fc30c"
+              "equalIndicator/v1": "a718dd8b3d2f81e6ee236bb2415e36918d17f3e5d3fa7b9eaadddcfc82595b32"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "warning",
+            "message": {
+              "text": "Unused import statement 'from PyQt6.QtGui import QCursor'",
+              "markdown": "Unused import statement `from PyQt6.QtGui import QCursor`"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/points_table.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 2,
+                    "startColumn": 1,
+                    "charOffset": 28,
+                    "charLength": 31,
+                    "snippet": {
+                      "text": "from PyQt6.QtGui import QCursor"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 169,
+                    "snippet": {
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "a9249c55e2287f107d20c60b417e8d206ebb1521895de6aecb8ffe77aac2cc77"
+            },
+            "properties": {
+              "ideaSeverity": "WARNING",
+              "qodanaSeverity": "High"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'PyQt6'",
+              "markdown": "Unresolved reference 'PyQt6'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/main.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 8,
+                    "startColumn": 6,
+                    "charOffset": 105,
+                    "charLength": 5,
+                    "snippet": {
+                      "text": "PyQt6"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 6,
+                    "startColumn": 1,
+                    "charOffset": 88,
+                    "charLength": 173,
+                    "snippet": {
+                      "text": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "c19c590064ad3d3f3bc762040e80c84e2955e5de7a59b3063eb0594d7931edc9"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -8359,23 +7983,23 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'math'",
-              "markdown": "Unresolved reference 'math'"
+              "text": "Unresolved reference 'Qt'",
+              "markdown": "Unresolved reference 'Qt'"
             },
             "locations": [
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_01/points.py",
+                    "uri": "lab_01/points_table.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
-                    "startColumn": 6,
-                    "charOffset": 5,
-                    "charLength": 4,
+                    "startColumn": 26,
+                    "charOffset": 25,
+                    "charLength": 2,
                     "snippet": {
-                      "text": "math"
+                      "text": "Qt"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -8383,9 +8007,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 29,
+                    "charLength": 168,
                     "snippet": {
-                      "text": "from math import fabs, sqrt\n\n"
+                      "text": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -8399,7 +8023,111 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "df5a13e50255db5a1db94009377df6233fc1ebd79f79a3747378f37b357730de"
+              "equalIndicator/v1": "c3af2b0d7998b9a96ab864da073a2f71ff123523c1b34d975ddc7d6ff9fd3b28"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "No module named 'sys'",
+              "markdown": "No module named 'sys'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/main.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 6,
+                    "startColumn": 8,
+                    "charOffset": 95,
+                    "charLength": 3,
+                    "snippet": {
+                      "text": "sys"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 4,
+                    "startColumn": 1,
+                    "charOffset": 83,
+                    "charLength": 44,
+                    "snippet": {
+                      "text": "\"\"\"\n\nimport sys\n\nfrom PyQt6.QtCore import Qt"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "cd1143a831487cfabfa1636654768438e866fe9367752c38983bf9a924506cac"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'QPainter'",
+              "markdown": "Unresolved reference 'QPainter'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/canvas.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 2,
+                    "startColumn": 25,
+                    "charOffset": 56,
+                    "charLength": 8,
+                    "snippet": {
+                      "text": "QPainter"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 128,
+                    "snippet": {
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "d4461cc7b4f79b1da3f71e496477f32aa9a73592ebc9aca6a73b939ae1e5a8ff"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -8509,13 +8237,65 @@
               "ideaSeverity": "ERROR",
               "qodanaSeverity": "Critical"
             }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'PyQt6'",
+              "markdown": "Unresolved reference 'PyQt6'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_01/canvas.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 6,
+                    "charOffset": 5,
+                    "charLength": 5,
+                    "snippet": {
+                      "text": "PyQt6"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 127,
+                    "snippet": {
+                      "text": "from PyQt6.QtCore import QPoint\nfrom PyQt6.QtGui import QPainter, QColor, QPen\nfrom PyQt6.QtWidgets import QWidget, QSizePolicy"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "fa1b381e843b37b6d84d8e6a2da7cf4de5674e29e4a7d655422386deba663bdd"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
           }
         ],
         "configProfile": "absent",
         "deviceId": "200820300000000-88cb-9530-7d3b-fa48d282756f",
         "qodanaNewResultSummary": {
-          "moderate": 7,
-          "total": 7
+          "moderate": 3,
+          "total": 3
         }
       }
     }
