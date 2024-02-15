@@ -99,7 +99,7 @@ class Triangle:
                             max_point = point
                             max_bisector = bisector
                             max_height = height
-                    except:
+                    except NoTriangleException:
                         pass
 
         if not max_triangle:

@@ -1,3 +1,8 @@
+"""
+Лабораторная работа №1 по курсу "Компьютерная Графика"
+Орлов Алексей (ИУ7-34Б)
+"""
+
 import sys
 
 from PyQt6.QtCore import Qt
@@ -80,7 +85,8 @@ class MainWindow(QMainWindow):
         if dialog.exec():
             self.points_table.add(Point(*dialog.res))
 
-    def task(self):
+    @staticmethod
+    def task():
         msgbox = QMessageBox()
         msgbox.setWindowTitle("Условие задачи")
         msgbox.setText("На плоскости дано множество точек. Найти такой треугольник с вершинами " +

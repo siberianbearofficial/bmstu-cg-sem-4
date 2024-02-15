@@ -34,6 +34,7 @@ class PointsTableRow(QWidget):
         layout.addWidget(delete_button)
 
     def mouseDoubleClickEvent(self, a0):
+        super().mouseDoubleClickEvent(a0)
         dialog = PointDialog(self.point.x, self.point.y)
         if dialog.exec():
             self.point.x, self.point.y = dialog.res

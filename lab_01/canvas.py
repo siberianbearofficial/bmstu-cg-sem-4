@@ -35,6 +35,7 @@ class Canvas(QWidget):
         self.update()
 
     def paintEvent(self, a0) -> None:
+        super().paintEvent(a0)
         self._painter.begin(self)
 
         self._draw_line(Line.from_points(Point(0, 0), Point(0, 1)), QColor(0, 0, 0, 150))
