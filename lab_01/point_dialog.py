@@ -7,14 +7,14 @@ class PointDialog(QDialog):
 
         layout = QVBoxLayout(self)
 
-        layout.addWidget(QLabel("Координата X:"))
+        layout.addWidget(QLabel("Ввод X:"))
 
         self._x_edit = QDoubleSpinBox()
         self._x_edit.setRange(-1e300, 1e300)
         self._x_edit.setValue(float(x))
         layout.addWidget(self._x_edit)
 
-        layout.addWidget(QLabel("Координата Y:"))
+        layout.addWidget(QLabel("Ввод Y:"))
 
         self._y_edit = QDoubleSpinBox()
         self._y_edit.setRange(-1e300, 1e300)

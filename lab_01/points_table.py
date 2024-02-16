@@ -1,6 +1,7 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QCursor
-from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem
+from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \
+    QScrollArea
 
 from point_dialog import PointDialog
 from figures.point import Point
@@ -45,11 +46,11 @@ class PointsTableRow(QWidget):
 class PointsTable(QWidget):
     def __init__(self):
         super().__init__()
-        self.layout = QVBoxLayout(self)
-        self.layout.setContentsMargins(0, 0, 0, 0)
-        self.layout.setSpacing(0)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self.points = []
 
@@ -58,7 +59,19 @@ class PointsTable(QWidget):
         header_layout = QHBoxLayout(header)
         header_layout.setContentsMargins(0, 0, 0, 0)
         header_layout.setSpacing(0)
-        self.layout.addWidget(header)
+        layout.addWidget(header)
+
+        self._scroll_area = QScrollArea()
+        self._scroll_area.setStyleSheet('border: none;')
+        self._scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        layout.addWidget(self._scroll_area)
+        points = QWidget()
+        self._scroll_area.setWidget(points)
+        self._scroll_area.setWidgetResizable(True)
+        self.points_layout = QVBoxLayout(points)
+        self.points_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.points_layout.setContentsMargins(0, 0, 0, 0)
+        self.points_layout.setSpacing(0)
 
         x_label = QLabel('X')
         x_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -76,11 +89,16 @@ class PointsTable(QWidget):
     def add(self, point: Point):
         row = PointsTableRow(point, self.remove)
         self.points.append(point)
-        self.layout.addWidget(row)
+        self.points_layout.addWidget(row)
 
     def remove(self, row: PointsTableRow):
         point = row.point
         self.points.remove(point)
-        self.layout.removeWidget(row)
+        self.points_layout.removeWidget(row)
         row.setParent(None)
         return point
+
+    def clear(self):
+        for _ in range(self.points_layout.count()):
+            self.points_layout.takeAt(0).widget().setParent(None)
+        self.points.clear()

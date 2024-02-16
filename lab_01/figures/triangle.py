@@ -35,8 +35,8 @@ class Triangle:
     def __bisector_height_angle(self, point: Point):
         """
         Угол между биссектрисой и высотой из вершины point.
-        :param point: вершина для нахождения угла.
-        :return: найденный угол, биссектриса и высота из вершины point.
+        :param point: Вершина для нахождения угла.
+        :return: Найденный угол, биссектриса и высота из вершины point.
         """
 
         points = [self.p1, self.p2, self.p3]
@@ -65,7 +65,7 @@ class Triangle:
     def max_bisector_height_angle(self):
         """
         Максимальный угол между биссектрисой и высотой.
-        :return: найденный угол, вершина, биссектриса и высота из этой вершины.
+        :return: Найденный угол, вершина, биссектриса и высота из этой вершины.
         """
 
         res1, bis1, hgt1 = self.__bisector_height_angle(self.p1)
@@ -105,4 +105,4 @@ class Triangle:
         if not max_triangle:
             raise NoTriangleException
 
-        return max_point, max_triangle, max_bisector, max_height
+        return max_point, max_triangle, max_bisector, max_height, max_bisector_height_angle

@@ -41,8 +41,8 @@ class Canvas(QWidget):
         self._draw_line(Line.from_points(Point(0, 0), Point(0, 1)), QColor(0, 0, 0, 150))
         self._draw_line(Line.from_points(Point(0, 0), Point(1, 0)), QColor(0, 0, 0, 150))
 
-        for el in self._points:
-            self._draw_point(el, '#122faa')
+        for index, el in enumerate(self._points):
+            self._draw_point(el, '#122faa', index)
         if isinstance(self._triangle, Triangle):
             self._draw_triangle(self._triangle, self._point, self._bisector, self._height, '#7200a3')
 
@@ -91,10 +91,10 @@ class Canvas(QWidget):
     def _real_y(self, y):
         return (-y + self._camera_pos[1] * self._scale + self.height() / 2) / self._scale
 
-    def _draw_point(self, point: Point, color):
+    def _draw_point(self, point: Point, color, index: int | None = None):
         self._set_color(color)
         self._painter.drawEllipse(QPoint(self._x(point.x), self._y(point.y)), 2, 2)
-        self._painter.drawText(self._x(point.x), self._y(point.y) - 12, str(point))
+        self._painter.drawText(self._x(point.x), self._y(point.y) - 12, f'{index + 1}: {point}' if index is not None else str(point))
 
     def _draw_line(self, line: Line, color):
         if line.a:
@@ -117,9 +117,9 @@ class Canvas(QWidget):
         self._draw_segment(triangle.p3, triangle.p2, color)
         self._draw_segment(triangle.p1, triangle.p3, color)
 
-        self._draw_point(triangle.p1, accent_color if triangle.p1 == point else color)
-        self._draw_point(triangle.p2, accent_color if triangle.p2 == point else color)
-        self._draw_point(triangle.p3, accent_color if triangle.p3 == point else color)
+        # self._draw_point(triangle.p1, accent_color if triangle.p1 == point else color)
+        # self._draw_point(triangle.p2, accent_color if triangle.p2 == point else color)
+        # self._draw_point(triangle.p3, accent_color if triangle.p3 == point else color)
 
         self._draw_line(height, accent_color)
         self._draw_line(bisector, accent_color)
