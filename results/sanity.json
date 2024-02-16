@@ -42,6 +42,37 @@
   "sources": [
     {
       "type": "file",
+      "path": "lab_01/figures/triangle.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 1,
+      "length": 4145,
+      "code": {
+        "startLine": 1,
+        "length": 4145,
+        "offset": 0,
+        "surroundingCode": "from math import sqrt, atan\r\nfrom figures.line import Line\r\nfrom figures.point import Point\r\n\r\n\r\nclass NoTriangleException(Exception):\r\n    pass\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1: Point, p2: Point, p3: Point):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n        self.s1 = sqrt((p3.x - p2.x) ** 2 + (p3.y - p2.y) ** 2)\r\n        self.s2 = sqrt((p3.x - p1.x) ** 2 + (p3.y - p1.y) ** 2)\r\n        self.s3 = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n\r\n        p = (self.s1 + self.s2 + self.s3) / 2\r\n        self.area = sqrt(p * (p - self.s1) * (p - self.s2) * (p - self.s3))\r\n\r\n        if self.area < 1e-6:\r\n            raise NoTriangleException\r\n\r\n    def height(self, point: Point):\r\n        match point:\r\n            case self.p1:\r\n                return Line.from_points(self.p2, self.p3).perpendicular(self.p1)\r\n            case self.p2:\r\n                return Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n            case _:\r\n                return Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n\r\n    def __bisector_height_angle(self, point: Point):\r\n        \"\"\"\r\n        Угол между биссектрисой и высотой из вершины point.\r\n        :param point: Вершина для нахождения угла.\r\n        :return: Найденный угол, биссектриса и высота из вершины point.\r\n        \"\"\"\r\n\r\n        points = [self.p1, self.p2, self.p3]\r\n        points.remove(point)\r\n\r\n        height = Line.from_points(*points).perpendicular(point)\r\n\r\n        a, b = points[0], points[1]\r\n        a_point_len = sqrt((a.x - point.x) ** 2 + (a.y - point.y) ** 2)\r\n        b_point_len = sqrt((b.x - point.x) ** 2 + (b.y - point.y) ** 2)\r\n        p = Point(point.x + (b.x - point.x) / b_point_len * a_point_len,\r\n                  point.y + (b.y - point.y) / b_point_len * a_point_len)\r\n        line_a_perp = Line.from_points(point, a).perpendicular(a)\r\n        line_b_perp = Line.from_points(point, b).perpendicular(p)\r\n        line_ab = Line.from_points(a, b)\r\n\r\n        bisector = Line.from_points(point, line_a_perp.intersection(line_b_perp))\r\n\r\n        p1 = bisector.intersection(line_ab)\r\n        p2 = height.intersection(line_ab)\r\n        p12_distance = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n        height_distance = sqrt((point.x - p2.x) ** 2 + (point.y - p2.y) ** 2)\r\n\r\n        return atan(p12_distance / height_distance), bisector, height\r\n\r\n    def max_bisector_height_angle(self):\r\n        \"\"\"\r\n        Максимальный угол между биссектрисой и высотой.\r\n        :return: Найденный угол, вершина, биссектриса и высота из этой вершины.\r\n        \"\"\"\r\n\r\n        res1, bis1, hgt1 = self.__bisector_height_angle(self.p1)\r\n        res2, bis2, hgt2 = self.__bisector_height_angle(self.p2)\r\n        res3, bis3, hgt3 = self.__bisector_height_angle(self.p3)\r\n\r\n        if res1 > res2 and res1 > res3:\r\n            return res1, self.p1, bis1, hgt1\r\n        if res2 > res1 and res2 > res3:\r\n            return res2, self.p2, bis2, hgt2\r\n        return res3, self.p3, bis3, hgt3\r\n\r\n    @staticmethod\r\n    def with_max_bisector_height_angle(points: list[Point]):\r\n        max_bisector_height_angle = None\r\n        max_triangle = None\r\n        max_point = None\r\n        max_bisector = None\r\n        max_height = None\r\n\r\n        for i in range(len(points) - 2):\r\n            for j in range(i + 1, len(points) - 1):\r\n                for k in range(j + 1, len(points)):\r\n                    try:\r\n                        triangle = Triangle(points[i], points[j], points[k])\r\n\r\n                        bisector_height_angle, point, bisector, height = triangle.max_bisector_height_angle()\r\n                        if not max_bisector_height_angle or bisector_height_angle > max_bisector_height_angle:\r\n                            max_bisector_height_angle = bisector_height_angle\r\n                            max_triangle = triangle\r\n                            max_point = point\r\n                            max_bisector = bisector\r\n                            max_height = height\r\n                    except NoTriangleException:\r\n                        pass\r\n\r\n        if not max_triangle:\r\n            raise NoTriang"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyInterpreterInspection"
+  },
+  "hash": "1600e12db1441b8338eb85d31cdceb1e2099ecd941477df0ac6de98c2f71c466"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "An invalid interpreter",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "High",
+  "comment": "No Python interpreter configured for the project",
+  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
+  "sources": [
+    {
+      "type": "file",
       "path": "lab_01/main.py",
       "language": "Python",
       "line": 1,
@@ -108,12 +139,12 @@
       "language": "Python",
       "line": 1,
       "offset": 1,
-      "length": 168,
+      "length": 171,
       "code": {
         "startLine": 1,
-        "length": 168,
+        "length": 171,
         "offset": 0,
-        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n\nfrom point_dialog import PointDialog"
+        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \\\n    QScrollArea\n"
       }
     }
   ],
@@ -121,7 +152,7 @@
     "module": "project",
     "inspectionName": "PyInterpreterInspection"
   },
-  "hash": "8d38e60617d66a1883453fe7ef2cf3d0deb95a1745a7fde9b010a4022df5b4fd"
+  "hash": "894f0f7870e7ae7532883008e77df8bb6e1f75fc381620bb7711fc75e86a714f"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -166,47 +197,16 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_01/figures/triangle.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 1,
-      "length": 4118,
-      "code": {
-        "startLine": 1,
-        "length": 4118,
-        "offset": 0,
-        "surroundingCode": "from math import sqrt, atan\r\nfrom figures.line import Line\r\nfrom figures.point import Point\r\n\r\n\r\nclass NoTriangleException(Exception):\r\n    pass\r\n\r\n\r\nclass Triangle:\r\n    def __init__(self, p1: Point, p2: Point, p3: Point):\r\n        self.p1 = p1\r\n        self.p2 = p2\r\n        self.p3 = p3\r\n\r\n        self.s1 = sqrt((p3.x - p2.x) ** 2 + (p3.y - p2.y) ** 2)\r\n        self.s2 = sqrt((p3.x - p1.x) ** 2 + (p3.y - p1.y) ** 2)\r\n        self.s3 = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n\r\n        p = (self.s1 + self.s2 + self.s3) / 2\r\n        self.area = sqrt(p * (p - self.s1) * (p - self.s2) * (p - self.s3))\r\n\r\n        if self.area < 1e-6:\r\n            raise NoTriangleException\r\n\r\n    def height(self, point: Point):\r\n        match point:\r\n            case self.p1:\r\n                return Line.from_points(self.p2, self.p3).perpendicular(self.p1)\r\n            case self.p2:\r\n                return Line.from_points(self.p1, self.p3).perpendicular(self.p2)\r\n            case _:\r\n                return Line.from_points(self.p1, self.p2).perpendicular(self.p3)\r\n\r\n    def __bisector_height_angle(self, point: Point):\r\n        \"\"\"\r\n        Угол между биссектрисой и высотой из вершины point.\r\n        :param point: вершина для нахождения угла.\r\n        :return: найденный угол, биссектриса и высота из вершины point.\r\n        \"\"\"\r\n\r\n        points = [self.p1, self.p2, self.p3]\r\n        points.remove(point)\r\n\r\n        height = Line.from_points(*points).perpendicular(point)\r\n\r\n        a, b = points[0], points[1]\r\n        a_point_len = sqrt((a.x - point.x) ** 2 + (a.y - point.y) ** 2)\r\n        b_point_len = sqrt((b.x - point.x) ** 2 + (b.y - point.y) ** 2)\r\n        p = Point(point.x + (b.x - point.x) / b_point_len * a_point_len,\r\n                  point.y + (b.y - point.y) / b_point_len * a_point_len)\r\n        line_a_perp = Line.from_points(point, a).perpendicular(a)\r\n        line_b_perp = Line.from_points(point, b).perpendicular(p)\r\n        line_ab = Line.from_points(a, b)\r\n\r\n        bisector = Line.from_points(point, line_a_perp.intersection(line_b_perp))\r\n\r\n        p1 = bisector.intersection(line_ab)\r\n        p2 = height.intersection(line_ab)\r\n        p12_distance = sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)\r\n        height_distance = sqrt((point.x - p2.x) ** 2 + (point.y - p2.y) ** 2)\r\n\r\n        return atan(p12_distance / height_distance), bisector, height\r\n\r\n    def max_bisector_height_angle(self):\r\n        \"\"\"\r\n        Максимальный угол между биссектрисой и высотой.\r\n        :return: найденный угол, вершина, биссектриса и высота из этой вершины.\r\n        \"\"\"\r\n\r\n        res1, bis1, hgt1 = self.__bisector_height_angle(self.p1)\r\n        res2, bis2, hgt2 = self.__bisector_height_angle(self.p2)\r\n        res3, bis3, hgt3 = self.__bisector_height_angle(self.p3)\r\n\r\n        if res1 > res2 and res1 > res3:\r\n            return res1, self.p1, bis1, hgt1\r\n        if res2 > res1 and res2 > res3:\r\n            return res2, self.p2, bis2, hgt2\r\n        return res3, self.p3, bis3, hgt3\r\n\r\n    @staticmethod\r\n    def with_max_bisector_height_angle(points: list[Point]):\r\n        max_bisector_height_angle = None\r\n        max_triangle = None\r\n        max_point = None\r\n        max_bisector = None\r\n        max_height = None\r\n\r\n        for i in range(len(points) - 2):\r\n            for j in range(i + 1, len(points) - 1):\r\n                for k in range(j + 1, len(points)):\r\n                    try:\r\n                        triangle = Triangle(points[i], points[j], points[k])\r\n\r\n                        bisector_height_angle, point, bisector, height = triangle.max_bisector_height_angle()\r\n                        if not max_bisector_height_angle or bisector_height_angle > max_bisector_height_angle:\r\n                            max_bisector_height_angle = bisector_height_angle\r\n                            max_triangle = triangle\r\n                            max_point = point\r\n                            max_bisector = bisector\r\n                            max_height = height\r\n                    except NoTriangleException:\r\n                        pass\r\n\r\n        if not max_triangle:\r"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyInterpreterInspection"
-  },
-  "hash": "e01727c7da8ce40d554f50aad926ee644d91fe22348b301d25757a993ca5f971"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "An invalid interpreter",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "High",
-  "comment": "No Python interpreter configured for the project",
-  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
-  "sources": [
-    {
-      "type": "file",
       "path": "lab_01/point_dialog.py",
       "language": "Python",
       "line": 1,
       "offset": 1,
-      "length": 1231,
+      "length": 1219,
       "code": {
         "startLine": 1,
-        "length": 1231,
+        "length": 1219,
         "offset": 0,
-        "surroundingCode": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        layout = QVBoxLayout(self)\r\n\r\n        layout.addWidget(QLabel(\"Координата X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        layout.addWidget(self._x_edit)\r\n\r\n        layout.addWidget(QLabel(\"Координата Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return self._x_edit.value(), self._y_edit.value()\r\n"
+        "surroundingCode": "from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QDoubleSpinBox, QHBoxLayout, QPushButton\r\n\r\n\r\nclass PointDialog(QDialog):\r\n    def __init__(self, x=0, y=0):\r\n        super().__init__()\r\n\r\n        layout = QVBoxLayout(self)\r\n\r\n        layout.addWidget(QLabel(\"Ввод X:\"))\r\n\r\n        self._x_edit = QDoubleSpinBox()\r\n        self._x_edit.setRange(-1e300, 1e300)\r\n        self._x_edit.setValue(float(x))\r\n        layout.addWidget(self._x_edit)\r\n\r\n        layout.addWidget(QLabel(\"Ввод Y:\"))\r\n\r\n        self._y_edit = QDoubleSpinBox()\r\n        self._y_edit.setRange(-1e300, 1e300)\r\n        self._y_edit.setValue(float(y))\r\n        layout.addWidget(self._y_edit)\r\n\r\n        buttons_layout = QHBoxLayout()\r\n        buttons_layout.setContentsMargins(0, 0, 0, 0)\r\n        layout.addLayout(buttons_layout)\r\n\r\n        self._button_ok = QPushButton(\"Ок\")\r\n        self._button_ok.clicked.connect(self.accept)\r\n        buttons_layout.addWidget(self._button_ok)\r\n\r\n        self._button_cancel = QPushButton(\"Отмена\")\r\n        self._button_cancel.clicked.connect(self.reject)\r\n        buttons_layout.addWidget(self._button_cancel)\r\n\r\n        self._x_edit.selectAll()\r\n\r\n    @property\r\n    def res(self):\r\n        return self._x_edit.value(), self._y_edit.value()\r\n"
       }
     }
   ],
@@ -214,7 +214,38 @@
     "module": "project",
     "inspectionName": "PyInterpreterInspection"
   },
-  "hash": "e4b48912f8e0cfeec99c4495d0e1976e381ac6bd98989b74d1be8973875fa839"
+  "hash": "d6060d93a32d0c3718da839ce9ff4bbc0c7e2800a2fc904a93c1f8c8440ce7fd"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'PyQt6'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 8,
+      "offset": 6,
+      "length": 5,
+      "code": {
+        "startLine": 6,
+        "length": 5,
+        "offset": 17,
+        "surroundingCode": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy, QLabel"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "20a157b55d61d8b0edf5bb4272a9f295de9caf902a08c4ae62dfa56dee3ec1e0"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -261,14 +292,14 @@
       "type": "file",
       "path": "lab_01/points_table.py",
       "language": "Python",
-      "line": 2,
+      "line": 1,
       "offset": 6,
       "length": 5,
       "code": {
         "startLine": 1,
         "length": 5,
-        "offset": 33,
-        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n"
+        "offset": 5,
+        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \\"
       }
     }
   ],
@@ -276,7 +307,7 @@
     "module": "project",
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
-  "hash": "4fb89af274e3a6ad3be7c9aa628ccf65e2c074ddc943ce40d635803bb6dd55c5"
+  "hash": "3f7a1eba87813eedf0f89b6894d906ed9beab8ff1d1e0b3c14e2ea27cb37f4db"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -285,21 +316,21 @@
     "Sanity"
   ],
   "severity": "Critical",
-  "comment": "Unresolved reference 'Qt'",
+  "comment": "Unresolved reference 'PyQt6'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
     {
       "type": "file",
-      "path": "lab_01/main.py",
+      "path": "lab_01/points_table.py",
       "language": "Python",
-      "line": 8,
-      "offset": 26,
-      "length": 2,
+      "line": 2,
+      "offset": 6,
+      "length": 5,
       "code": {
-        "startLine": 6,
-        "length": 2,
-        "offset": 37,
-        "surroundingCode": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy"
+        "startLine": 1,
+        "length": 5,
+        "offset": 33,
+        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \\\n    QScrollArea"
       }
     }
   ],
@@ -307,7 +338,7 @@
     "module": "project",
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
-  "hash": "50d24821625f983f5f3d589a57fada869632d84aeb0557afd58aee3c55afa64c"
+  "hash": "4acb4964d7afe72d7889a4d17ddf0958b9be7f9f87e0e726ff7b5138de811cf2"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -440,6 +471,37 @@
     "Sanity"
   ],
   "severity": "Critical",
+  "comment": "Unresolved reference 'Qt'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 8,
+      "offset": 26,
+      "length": 2,
+      "code": {
+        "startLine": 6,
+        "length": 2,
+        "offset": 37,
+        "surroundingCode": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy, QLabel"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "8a8d3bebe6c1d3de16851acb5c32995438cd3e56775b8237c939d0379abcbf40"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
   "comment": "Unresolved reference 'int'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -463,6 +525,37 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "8f2a09dcd88dcdcfe8a67b8c23d91de0915c9526558e7ee7ba219fcb5a79f9b5"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'PyQt6'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 9,
+      "offset": 6,
+      "length": 5,
+      "code": {
+        "startLine": 7,
+        "length": 5,
+        "offset": 34,
+        "surroundingCode": "\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy, QLabel\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "991439b46899ab6ac36684f108e36e866d7e9f5d282045ba21cdabcacee1c751"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -502,21 +595,21 @@
     "Sanity"
   ],
   "severity": "Critical",
-  "comment": "Unresolved reference 'PyQt6'",
+  "comment": "Unresolved reference 'Qt'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
     {
       "type": "file",
-      "path": "lab_01/main.py",
+      "path": "lab_01/points_table.py",
       "language": "Python",
-      "line": 9,
-      "offset": 6,
-      "length": 5,
+      "line": 1,
+      "offset": 26,
+      "length": 2,
       "code": {
-        "startLine": 7,
-        "length": 5,
-        "offset": 34,
-        "surroundingCode": "\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy\n"
+        "startLine": 1,
+        "length": 2,
+        "offset": 25,
+        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \\"
       }
     }
   ],
@@ -524,7 +617,7 @@
     "module": "project",
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
-  "hash": "9db0ecc8ffbd16cca01a775b9679914156fd3535b8d8d0249f64674b2c99b0b8"
+  "hash": "9c22380dd986c418bd9fb5857cceead9f7b31709e72f0dd798279c71d164cd21"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -563,37 +656,6 @@
   "tags": [
     "Sanity"
   ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'PyQt6'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/points_table.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 6,
-      "length": 5,
-      "code": {
-        "startLine": 1,
-        "length": 5,
-        "offset": 5,
-        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "a718dd8b3d2f81e6ee236bb2415e36918d17f3e5d3fa7b9eaadddcfc82595b32"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
   "severity": "High",
   "comment": "Unused import statement `from PyQt6.QtGui import QCursor`",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
@@ -609,7 +671,7 @@
         "startLine": 1,
         "length": 31,
         "offset": 28,
-        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem\n"
+        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem, \\\n    QScrollArea"
       }
     }
   ],
@@ -617,69 +679,7 @@
     "module": "project",
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
-  "hash": "a9249c55e2287f107d20c60b417e8d206ebb1521895de6aecb8ffe77aac2cc77"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'PyQt6'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/main.py",
-      "language": "Python",
-      "line": 8,
-      "offset": 6,
-      "length": 5,
-      "code": {
-        "startLine": 6,
-        "length": 5,
-        "offset": 17,
-        "surroundingCode": "import sys\n\nfrom PyQt6.QtCore import Qt\nfrom PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QVBoxLayout, \\\n    QMessageBox, QApplication, QSizePolicy"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "c19c590064ad3d3f3bc762040e80c84e2955e5de7a59b3063eb0594d7931edc9"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'Qt'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/points_table.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 26,
-      "length": 2,
-      "code": {
-        "startLine": 1,
-        "length": 2,
-        "offset": 25,
-        "surroundingCode": "from PyQt6.QtCore import Qt\nfrom PyQt6.QtGui import QCursor\nfrom PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QSizePolicy, QSpacerItem"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "c3af2b0d7998b9a96ab864da073a2f71ff123523c1b34d975ddc7d6ff9fd3b28"
+  "hash": "cbd8277ebd89ba395e2f0c7a2b823650593dc3ebfa4fb3f6cf852a7ec22b22ec"
 },{
   "tool": "Code Inspection",
   "category": "Python",

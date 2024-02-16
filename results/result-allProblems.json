@@ -13,37 +13,6 @@
       "type": "file",
       "path": "lab_01/canvas.py",
       "language": "Python",
-      "line": 51,
-      "offset": 9,
-      "length": 11,
-      "code": {
-        "startLine": 49,
-        "length": 11,
-        "offset": 37,
-        "surroundingCode": "        self._painter.end()\n\n    def resizeEvent(self, a0) -> None:\n        self.scale()\n        super().resizeEvent(a0)"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyPep8NamingInspection"
-  },
-  "hash": "2bd4a2f0b675b37ade5114b05f055875125a80d4224d4b7a1d4019b77bbeb2dc"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "PEP 8 naming convention violation",
-  "tags": [
-    "Python"
-  ],
-  "severity": "Moderate",
-  "comment": "Function name should be lowercase",
-  "detailsInfo": "Reports violations of the\n[PEP8](https://www.python.org/dev/peps/pep-0008/) naming conventions.\n\n**Example:**\n\n\n    class mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n\nIn this code fragment, IDE offers to rename `mammalia` to `Mammalia`.\nWhen the quick-fix is applied, the code change to:\n\n\n    class Mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_01/canvas.py",
-      "language": "Python",
       "line": 37,
       "offset": 9,
       "length": 10,
@@ -73,13 +42,44 @@
   "sources": [
     {
       "type": "file",
+      "path": "lab_01/canvas.py",
+      "language": "Python",
+      "line": 51,
+      "offset": 9,
+      "length": 11,
+      "code": {
+        "startLine": 49,
+        "length": 11,
+        "offset": 37,
+        "surroundingCode": "        self._painter.end()\n\n    def resizeEvent(self, a0) -> None:\n        self.scale()\n        super().resizeEvent(a0)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8NamingInspection"
+  },
+  "hash": "87864604df222505f77be53aa788a9248bf94c859c0e82e9530acda25713bf5e"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "PEP 8 naming convention violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "Function name should be lowercase",
+  "detailsInfo": "Reports violations of the\n[PEP8](https://www.python.org/dev/peps/pep-0008/) naming conventions.\n\n**Example:**\n\n\n    class mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n\nIn this code fragment, IDE offers to rename `mammalia` to `Mammalia`.\nWhen the quick-fix is applied, the code change to:\n\n\n    class Mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n",
+  "sources": [
+    {
+      "type": "file",
       "path": "lab_01/points_table.py",
       "language": "Python",
-      "line": 36,
+      "line": 37,
       "offset": 9,
       "length": 21,
       "code": {
-        "startLine": 34,
+        "startLine": 35,
         "length": 21,
         "offset": 49,
         "surroundingCode": "        layout.addWidget(delete_button)\n\n    def mouseDoubleClickEvent(self, a0):\n        super().mouseDoubleClickEvent(a0)\n        dialog = PointDialog(self.point.x, self.point.y)"
@@ -90,5 +90,36 @@
     "module": "project",
     "inspectionName": "PyPep8NamingInspection"
   },
-  "hash": "4912eb39668b15da8f6281fc3aea6dc5ca1deed95b5fa934cfad1566c997cc66"
+  "hash": "9fa525f0293565c2ba0eacd523b4500b13b5f78bd0ce70544ce39187253657f2"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unused local symbols",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "Parameter 'point' value is not used",
+  "detailsInfo": "Reports local variables, parameters, and functions that are locally defined, but not used name in a function.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/canvas.py",
+      "language": "Python",
+      "line": 113,
+      "offset": 50,
+      "length": 12,
+      "code": {
+        "startLine": 111,
+        "length": 12,
+        "offset": 141,
+        "surroundingCode": "        self._painter.drawLine(self._x(p1.x), self._y(p1.y), self._x(p2.x), self._y(p2.y))\n\n    def _draw_triangle(self, triangle: Triangle, point: Point, bisector: Line, height: Line, color):\n        accent_color = '#c154c1'\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnusedLocalInspection"
+  },
+  "hash": "58a8f55fa608ffd14767822a160cc3e3cf5dee9d7da031f819e982c9ab77728f"
 }]}
