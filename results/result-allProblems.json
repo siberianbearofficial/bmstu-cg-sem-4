@@ -1,6 +1,161 @@
 {"version":"3","listProblem":[{
   "tool": "Code Inspection",
   "category": "Python",
+  "type": "PEP 8 coding style violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "PEP 8: E501 line too long (165 \\> 120 characters)",
+  "detailsInfo": "Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 57,
+      "offset": 45,
+      "length": 120,
+      "code": {
+        "startLine": 55,
+        "length": 120,
+        "offset": 109,
+        "surroundingCode": "\n        self.add_point_button = QPushButton('Добавить точку ➕')\n        self.add_point_button.setStyleSheet('background-color: rgba(150, 100, 255, 0.1); border: none; border-radius: 5px; padding-left: 10px; padding-right: 10px;')\n        self.add_point_button.setFixedHeight(40)\n        self.add_point_button.setCursor(Qt.CursorShape.PointingHandCursor)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8Inspection"
+  },
+  "hash": "38414fb5118a08d336ba45b05cec201c0711626f641156fcc4bffb99bde06496"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "PEP 8 coding style violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "PEP 8: E501 line too long (159 \\> 120 characters)",
+  "detailsInfo": "Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 64,
+      "offset": 39,
+      "length": 120,
+      "code": {
+        "startLine": 62,
+        "length": 120,
+        "offset": 93,
+        "surroundingCode": "\n        self.run_button = QPushButton('Построить 🖊')\n        self.run_button.setStyleSheet('background-color: rgba(150, 100, 255, 0.1); border: none; border-radius: 5px; padding-left: 10px; padding-right: 10px;')\n        self.run_button.setFixedHeight(40)\n        self.run_button.setCursor(Qt.CursorShape.PointingHandCursor)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8Inspection"
+  },
+  "hash": "64d336649912102a19b6874ab9cbc0203f6f457bbb8c240e068c322264565f5f"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "PEP 8 coding style violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "PEP 8: E501 line too long (133 \\> 120 characters)",
+  "detailsInfo": "Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/canvas.py",
+      "language": "Python",
+      "line": 97,
+      "offset": 118,
+      "length": 4,
+      "code": {
+        "startLine": 95,
+        "length": 4,
+        "offset": 232,
+        "surroundingCode": "        self._set_color(color)\n        self._painter.drawEllipse(QPoint(self._x(point.x), self._y(point.y)), 2, 2)\n        self._painter.drawText(self._x(point.x), self._y(point.y) - 12, f'{index + 1}: {point}' if index is not None else str(point))\n\n    def _draw_line(self, line: Line, color):"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8Inspection"
+  },
+  "hash": "766a1262d9903be121d4aba05515ede31378d9c477ef7cb2d267b2a64ae81ea5"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "PEP 8 coding style violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "PEP 8: E501 line too long (142 \\> 120 characters)",
+  "detailsInfo": "Reports violations of the [PEP 8 coding style guide](https://www.python.org/dev/peps/pep-0008/) by running the bundled [pycodestyle.py](https://github.com/PyCQA/pycodestyle) tool.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_01/main.py",
+      "language": "Python",
+      "line": 121,
+      "offset": 105,
+      "length": 30,
+      "code": {
+        "startLine": 119,
+        "length": 30,
+        "offset": 135,
+        "surroundingCode": "        else:\n            try:\n                max_point, max_triangle, max_bisector, max_height, max_bisector_height_angle = Triangle.with_max_bisector_height_angle(points)\n                self.canvas.draw(points, max_point, max_triangle, max_bisector, max_height)\n                self.result_label.setText(f'Результат:\\n'"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8Inspection"
+  },
+  "hash": "c9e58e065c5d032f3cb7d5620239b39c26fc838a120bf7e04dfd96483b06bddf"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "PEP 8 naming convention violation",
+  "tags": [
+    "Python"
+  ],
+  "severity": "Moderate",
+  "comment": "Function name should be lowercase",
+  "detailsInfo": "Reports violations of the\n[PEP8](https://www.python.org/dev/peps/pep-0008/) naming conventions.\n\n**Example:**\n\n\n    class mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n\nIn this code fragment, IDE offers to rename `mammalia` to `Mammalia`.\nWhen the quick-fix is applied, the code change to:\n\n\n    class Mammalia(object):\n        extremities = 4\n\n        def feeds(self):\n            print(\"milk\")\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/canvas.py",
+      "language": "Python",
+      "line": 29,
+      "offset": 9,
+      "length": 10,
+      "code": {
+        "startLine": 27,
+        "length": 10,
+        "offset": 31,
+        "surroundingCode": "        self.update()\n\n    def paintEvent(self, a0) -> None:\n        super().paintEvent(a0)\n        self._painter.begin(self)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyPep8NamingInspection"
+  },
+  "hash": "242f654217ae75df07a342000df147ca248bb35832a15c2a38fe7ee9d5f51a4e"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
   "type": "PEP 8 naming convention violation",
   "tags": [
     "Python"
