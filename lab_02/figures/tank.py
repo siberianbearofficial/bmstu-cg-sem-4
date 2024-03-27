@@ -46,4 +46,5 @@ class Tank:
             obj.scale(p, kx, ky)
 
     def rotate(self, p: Point, angle):
-        pass
+        for obj in self.objects:
+            obj.rotate(p, angle)
