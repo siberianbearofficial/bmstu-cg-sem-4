@@ -15,9 +15,9 @@ class Point:
         y = self.y if isinstance(self.y, int) else f'{self.y:.4g}'.strip()
         return f"({x}, {y})"
 
-    def move(self, dx=0, dy=0):
-        self.x += dx
-        self.y += dy
+    def move(self, vector: 'Point'):
+        self.x += vector.x
+        self.y += vector.y
         return self
 
     def scale(self, p: 'Point', kx=1, ky=1):

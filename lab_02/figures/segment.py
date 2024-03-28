@@ -9,14 +9,17 @@ class Segment:
     def __str__(self):
         return f'[{self.p1}, {self.p2}]'
 
-    def move(self, dx=0, dy=0):
-        self.p1.move(dx, dy)
-        self.p2.move(dx, dy)
+    def move(self, vector: Point):
+        self.p1.move(vector)
+        self.p2.move(vector)
+        return self
 
     def scale(self, p: Point, kx=1, ky=1):
         self.p1.scale(p, kx, ky)
         self.p2.scale(p, kx, ky)
+        return self
 
     def rotate(self, p: Point, angle):
         self.p1.rotate(p, angle)
         self.p2.rotate(p, angle)
+        return self

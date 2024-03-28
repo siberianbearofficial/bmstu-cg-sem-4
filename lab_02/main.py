@@ -1,5 +1,5 @@
 """
-Лабораторная работа №2 по курсу "Компьютерная Графика"
+Лабораторная работа №2 по курсу 'Компьютерная Графика'
 Орлов Алексей (ИУ7-34Б)
 """
 
@@ -7,13 +7,12 @@ import sys
 from math import radians
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, \
-    QMessageBox, QApplication, QSizePolicy
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QApplication, QSizePolicy
 from PyQtUIkit.widgets import *
 
 from figures.point import Point
 from figures.tank import Tank
-from ui import SpinBox, Button
+from ui import SpinBox, Button, IconButton
 
 from canvas import Canvas
 
@@ -21,6 +20,9 @@ from canvas import Canvas
 class MainWindow(KitMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.actions_before = list()
+        self.actions_after = list()
 
         self.setWindowTitle('Танк')
         self.setMinimumSize(1080, 720)
@@ -38,6 +40,27 @@ class MainWindow(KitMainWindow):
         aside.setContentsMargins(0, 0, 0, 0)
         aside.setSpacing(20)
         layout.addWidget(aside)
+
+        # APPLICATION BAR
+        bar = KitHBoxLayout()
+        bar.setContentsMargins(0, 0, 0, 0)
+        bar.setSpacing(10)
+        bar.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+        aside.addWidget(bar)
+
+        history = KitHGroup()
+        history.height = 45
+        history.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        history.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        history.addItem(IconButton('solid-arrow-rotate-left', self.undo))
+        history.addItem(IconButton('solid-arrow-rotate-right', self.redo))
+        history.addItem(IconButton('solid-house', self.home))
+        bar.addWidget(history)
+
+        task_button = IconButton('solid-book-open', self.task)
+        task_button.main_palette = 'Menu'
+        bar.addWidget(task_button, 1, Qt.AlignmentFlag.AlignRight)
 
         # MOVE
         move = KitVBoxLayout()
@@ -61,7 +84,7 @@ class MainWindow(KitMainWindow):
 
         scale.addWidget(KitLabel('Масштабирование'))
 
-        self.scale_point = Point(1, 1)
+        self.scale_point = Point(0, 0)
         scale.addWidget(SpinBox('x', self.scale_point.x, self.on_scale_x_change))
         scale.addWidget(SpinBox('y', self.scale_point.y, self.on_scale_y_change))
 
@@ -96,9 +119,7 @@ class MainWindow(KitMainWindow):
         main_widget_layout.setSpacing(0)
         layout.addWidget(main_widget)
 
-        self.tank = Tank()
-        self.tank.scale(Point(0, 0), 10, 10)
-        self.tank.move(400, 400)
+        self.tank = Tank().scale(Point(0, 0), 10, 10).move(Point(400, 400))
 
         self.canvas = Canvas(20)
         main_widget_layout.addWidget(self.canvas)
@@ -106,7 +127,6 @@ class MainWindow(KitMainWindow):
         self.update_objects()
 
     def update_objects(self):
-        # self.canvas.clear()
         self.canvas.draw(self.tank.objects)
         self.canvas.update()
 
@@ -119,7 +139,9 @@ class MainWindow(KitMainWindow):
         self.move_vector.y = value
 
     def on_move_button_click(self):
-        self.tank.move(self.move_vector.x, self.move_vector.y)
+        self.tank.move(self.move_vector)
+        self.actions_before.append(('MOVE', self.move_vector))
+        print(self.actions_before)
         self.update_objects()
 
     # SCALE
@@ -138,9 +160,10 @@ class MainWindow(KitMainWindow):
 
     def on_scale_button_click(self):
         if self.scale_kx == 0 or self.scale_ky == 0:
-            MainWindow.error('Нельзя вводить ноль!')
+            self.error('Нельзя вводить ноль!')
         else:
             self.tank.scale(self.scale_point, self.scale_kx, self.scale_ky)
+            self.actions_before.append(('SCALE', self.scale_point, self.scale_kx, self.scale_ky))
             self.update_objects()
 
     # ROTATE
@@ -155,23 +178,52 @@ class MainWindow(KitMainWindow):
         self.rotate_angle = value
 
     def on_rotate_button_click(self):
-        self.tank.rotate(self.rotate_point, radians(self.rotate_angle))
+        angle = radians(self.rotate_angle)
+        self.tank.rotate(self.rotate_point, angle)
+        self.actions_before.append(('ROTATE', self.rotate_point, angle))
         self.update_objects()
 
-    @staticmethod
-    def task():
-        msgbox = QMessageBox()
-        msgbox.setWindowTitle("Условие задачи")
-        msgbox.setText("Отрисовать танк по координатам. Предоставить возможность перемещать, масштабировать и "
-                       "вращать его относительно выбранных точек.")
-        msgbox.exec()
+    def undo(self):
+        if not self.actions_before:
+            return
+        action = self.actions_before.pop()
+        match action[0]:
+            case 'MOVE':
+                self.tank.move(Point(*map(lambda x: -x, action[1])))
+            case 'SCALE':
+                self.tank.scale(action[1], 1 / action[2], 1 / action[3])
+            case 'ROTATE':
+                self.tank.rotate(action[1], -action[2])
+        self.actions_after.append(action)
+        self.update_objects()
 
-    @staticmethod
-    def error(msg: str):
-        msgbox = QMessageBox()
-        msgbox.setWindowTitle("Ошибка")
-        msgbox.setText(msg)
-        msgbox.exec()
+    def redo(self):
+        if not self.actions_after:
+            return
+        action = self.actions_after.pop()
+        match action[0]:
+            case 'MOVE':
+                self.tank.move(action[1])
+            case 'SCALE':
+                self.tank.scale(action[1], action[2], action[3])
+            case 'ROTATE':
+                self.tank.rotate(action[1], action[2])
+        self.actions_before.append(action)
+        self.update_objects()
+
+    def home(self):
+        self.tank = Tank().scale(Point(0, 0), 10, 10).move(Point(400, 400))
+        self.actions_before.clear()
+        self.actions_after.clear()
+        self.update_objects()
+
+    def task(self):
+        KitDialog.info(self, 'Условие задачи',
+                       'Отрисовать танк по координатам. Предоставить возможность перемещать, масштабировать и '
+                       'вращать его относительно выбранных точек.')
+
+    def error(self, msg: str):
+        KitDialog.danger(self, 'Ошибка', msg)
 
 
 def main():
@@ -181,5 +233,5 @@ def main():
     app.exec()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

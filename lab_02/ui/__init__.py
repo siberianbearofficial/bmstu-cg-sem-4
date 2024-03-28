@@ -1,2 +1,2 @@
-from ui.button import Button
+from ui.button import Button, IconButton
 from ui.spinbox import SpinBox

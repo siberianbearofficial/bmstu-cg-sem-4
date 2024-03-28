@@ -9,13 +9,18 @@ class SpinBox(KitHBoxLayout):
         self.setContentsMargins(0, 0, 0, 0)
         self.setSpacing(10)
 
-        self.addWidget(KitLabel(label))
+        label_widget = KitLabel(label)
+        label_widget.font_size = 'big'
+        self.addWidget(label_widget)
 
         self.value = value
         self._on_change = on_change
 
         self._spinbox = KitSpinBox(float)
+        self._spinbox.font_size = 'big'
+        self._spinbox.setFixedHeight(30)
         self._spinbox.setValue(value)
+        self._spinbox.setRange(-100000, 100000)
         self._spinbox.valueChanged.connect(self._value_changed)
         self.addWidget(self._spinbox)
 

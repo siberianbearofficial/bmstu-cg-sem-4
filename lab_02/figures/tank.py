@@ -29,7 +29,7 @@ class Tank:
             # Semicircles
             Arc(Point(-30, -5), 5, 5, pi / 2, 3 * pi / 2),
             Arc(Point(30, -5), 5, 5, -pi / 2, pi / 2),
-            # Circles
+            # Wheels
             Circle(Point(-28, -5), 2.5),
             Circle(Point(-14, -5), 2.5),
             Circle(Point(0, -5), 2.5),
@@ -37,14 +37,17 @@ class Tank:
             Circle(Point(28, -5), 2.5)
         ]
 
-    def move(self, dx=0, dy=0):
+    def move(self, vector: Point):
         for obj in self.objects:
-            obj.move(dx, dy)
+            obj.move(vector)
+        return self
 
     def scale(self, p: Point, kx, ky):
         for obj in self.objects:
             obj.scale(p, kx, ky)
+        return self
 
     def rotate(self, p: Point, angle):
         for obj in self.objects:
             obj.rotate(p, angle)
+        return self
