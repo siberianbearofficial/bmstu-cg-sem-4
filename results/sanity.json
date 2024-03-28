@@ -104,6 +104,37 @@
   "sources": [
     {
       "type": "file",
+      "path": "lab_02/figures/arc.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 1,
+      "length": 58,
+      "code": {
+        "startLine": 1,
+        "length": 58,
+        "offset": 0,
+        "surroundingCode": "from math import cos, sin\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyInterpreterInspection"
+  },
+  "hash": "352bfbd4b77210a0cae8d3f7c27c3e3cfe1d6af78299ea343d5ca22016ae5c6a"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "An invalid interpreter",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "High",
+  "comment": "No Python interpreter configured for the project",
+  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
+  "sources": [
+    {
+      "type": "file",
       "path": "lab_02/ui/spinbox.py",
       "language": "Python",
       "line": 1,
@@ -228,37 +259,6 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/ui/__init__.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 1,
-      "length": 60,
-      "code": {
-        "startLine": 1,
-        "length": 60,
-        "offset": 0,
-        "surroundingCode": "from ui.button import Button\nfrom ui.spinbox import SpinBox\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyInterpreterInspection"
-  },
-  "hash": "86f8267423994d7155cfe3b2820f7f6ffe9195a3181848b52ae491ae3e3d49e1"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "An invalid interpreter",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "High",
-  "comment": "No Python interpreter configured for the project",
-  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
-  "sources": [
-    {
-      "type": "file",
       "path": "lab_01/points_table.py",
       "language": "Python",
       "line": 1,
@@ -321,37 +321,6 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/ui/button.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 1,
-      "length": 56,
-      "code": {
-        "startLine": 1,
-        "length": 56,
-        "offset": 0,
-        "surroundingCode": "from typing import Callable\n\nfrom PyQt6.QtCore import Qt\nfrom PyQtUIkit.widgets import KitButton\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyInterpreterInspection"
-  },
-  "hash": "9988cbe94126b70bec1ee82c57163ce5934141fa80a8d9a9f6f046624d799f89"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "An invalid interpreter",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "High",
-  "comment": "No Python interpreter configured for the project",
-  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
-  "sources": [
-    {
-      "type": "file",
       "path": "lab_01/figures/point.py",
       "language": "Python",
       "line": 1,
@@ -383,16 +352,16 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/figures/arc.py",
+      "path": "lab_02/main.py",
       "language": "Python",
       "line": 1,
       "offset": 1,
-      "length": 62,
+      "length": 82,
       "code": {
         "startLine": 1,
-        "length": 62,
+        "length": 82,
         "offset": 0,
-        "surroundingCode": "from math import cos, sin, pi\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+        "surroundingCode": "\"\"\"\nЛабораторная работа №2 по курсу 'Компьютерная Графика'\nОрлов Алексей (ИУ7-34Б)\n\"\"\"\n"
       }
     }
   ],
@@ -400,7 +369,7 @@
     "module": "project",
     "inspectionName": "PyInterpreterInspection"
   },
-  "hash": "b1afbbc32fdb0aeac18a21cd0f0e608ff755778df20de7be56b58891c71a8e27"
+  "hash": "9b88073ba70807f48f75fe05346931ff680abfda5016f27520b556ac6f3bbd01"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -507,37 +476,6 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/main.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 1,
-      "length": 82,
-      "code": {
-        "startLine": 1,
-        "length": 82,
-        "offset": 0,
-        "surroundingCode": "\"\"\"\nЛабораторная работа №2 по курсу \"Компьютерная Графика\"\nОрлов Алексей (ИУ7-34Б)\n\"\"\"\n"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyInterpreterInspection"
-  },
-  "hash": "d307d429f9d7b66f075aa549f9731decab24dc1409c41725f0d24dfd34703588"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "An invalid interpreter",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "High",
-  "comment": "No Python interpreter configured for the project",
-  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
-  "sources": [
-    {
-      "type": "file",
       "path": "lab_01/point_dialog.py",
       "language": "Python",
       "line": 1,
@@ -559,34 +497,65 @@
 },{
   "tool": "Code Inspection",
   "category": "Python",
-  "type": "Unresolved references",
+  "type": "An invalid interpreter",
   "tags": [
     "Sanity"
   ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'math'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "severity": "High",
+  "comment": "No Python interpreter configured for the project",
+  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/figures/arc.py",
+      "path": "lab_02/ui/button.py",
       "language": "Python",
       "line": 1,
-      "offset": 6,
-      "length": 4,
+      "offset": 1,
+      "length": 83,
       "code": {
         "startLine": 1,
-        "length": 4,
-        "offset": 5,
-        "surroundingCode": "from math import cos, sin, pi\n\nfrom figures.point import Point"
+        "length": 83,
+        "offset": 0,
+        "surroundingCode": "from typing import Callable\n\nfrom PyQtUIkit.widgets import KitButton, KitIconButton\n\n"
       }
     }
   ],
   "attributes": {
     "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
+    "inspectionName": "PyInterpreterInspection"
   },
-  "hash": "165b9c54c706eb451badd1f0bb7901913ee011a81b32a13c33391527247c5cd2"
+  "hash": "f18c014b1d54e26ea29b813fb97b04213cef1e31044f12f22dd2a6a8b3d17fc1"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "An invalid interpreter",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "High",
+  "comment": "No Python interpreter configured for the project",
+  "detailsInfo": "Reports problems if there is no Python interpreter configured for the project or if the interpreter is invalid. Without a properly\nconfigured interpreter, you cannot execute your Python scripts and benefit from some Python code insight features.\n\nThe IDE provides quick access to the interpreter settings.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/ui/__init__.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 1,
+      "length": 72,
+      "code": {
+        "startLine": 1,
+        "length": 72,
+        "offset": 0,
+        "surroundingCode": "from ui.button import Button, IconButton\nfrom ui.spinbox import SpinBox\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyInterpreterInspection"
+  },
+  "hash": "f35754129dfd7d5598c729849b831725b2c899a7bdf8059ce0686dd003584d30"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -688,37 +657,6 @@
     "Sanity"
   ],
   "severity": "Critical",
-  "comment": "Unresolved reference 'cos'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_02/figures/arc.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 18,
-      "length": 3,
-      "code": {
-        "startLine": 1,
-        "length": 3,
-        "offset": 17,
-        "surroundingCode": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "3c972e77bfd0bc46d6e72db36b6afeccecaca666660d04a191dbf40b3da26e1a"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
   "comment": "Unresolved reference 'figures'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -781,37 +719,6 @@
     "Sanity"
   ],
   "severity": "Critical",
-  "comment": "Unresolved reference 'pi'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "lab_02/figures/arc.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 28,
-      "length": 2,
-      "code": {
-        "startLine": 1,
-        "length": 2,
-        "offset": 27,
-        "surroundingCode": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "509e6db8f7e76c1486d96926b0cf43bf70e36d53242563bb9984259c725864d2"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
   "comment": "Unresolved reference 'Arc'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -835,6 +742,68 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "59fce9074ba8a6c2d48b4c78fe8f73d71772f7fa1c3a682a518259f76f4a395a"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'sin'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/figures/arc.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 23,
+      "length": 3,
+      "code": {
+        "startLine": 1,
+        "length": 3,
+        "offset": 22,
+        "surroundingCode": "from math import cos, sin\n\nfrom figures.point import Point"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "5d1e559aa82748cf5bba3b37611f6cd4dcc1c4389d211ed478bef3dfd67a6a2f"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'cos'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/figures/arc.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 18,
+      "length": 3,
+      "code": {
+        "startLine": 1,
+        "length": 3,
+        "offset": 17,
+        "surroundingCode": "from math import cos, sin\n\nfrom figures.point import Point"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "733853ec43659770130fc011340d39a2170d89abdf83c7a4481b92c981c42d52"
 },{
   "tool": "Code Inspection",
   "category": "Python",
@@ -936,6 +905,37 @@
     "Sanity"
   ],
   "severity": "Critical",
+  "comment": "Unresolved reference 'figures'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/figures/arc.py",
+      "language": "Python",
+      "line": 3,
+      "offset": 6,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 32,
+        "surroundingCode": "from math import cos, sin\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "985b6f3b90332b6b540c57930f6b87f21891fa012e28cc8db14af68a9ba48b2a"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
   "comment": "Unresolved reference 'PyQt6'",
   "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
   "sources": [
@@ -1003,37 +1003,6 @@
   "sources": [
     {
       "type": "file",
-      "path": "lab_02/figures/arc.py",
-      "language": "Python",
-      "line": 1,
-      "offset": 23,
-      "length": 3,
-      "code": {
-        "startLine": 1,
-        "length": 3,
-        "offset": 22,
-        "surroundingCode": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "project",
-    "inspectionName": "PyUnresolvedReferencesInspection"
-  },
-  "hash": "aed730416336ff2156a6637ddaed897c4086641e03b3cb1244ccd9068cdb04ca"
-},{
-  "tool": "Code Inspection",
-  "category": "Python",
-  "type": "Unresolved references",
-  "tags": [
-    "Sanity"
-  ],
-  "severity": "Critical",
-  "comment": "Unresolved reference 'sin'",
-  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
-  "sources": [
-    {
-      "type": "file",
       "path": "lab_02/figures/point.py",
       "language": "Python",
       "line": 1,
@@ -1083,6 +1052,37 @@
     "inspectionName": "PyUnresolvedReferencesInspection"
   },
   "hash": "bc121d4ab37ab8bc52999a51ba8df8ce4a318708e4b311b435ef2865eb3df815"
+},{
+  "tool": "Code Inspection",
+  "category": "Python",
+  "type": "Unresolved references",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference 'math'",
+  "detailsInfo": "Reports references in your code that cannot be resolved.\n\nIn a dynamically typed language, this is possible in a limited number of cases.\n\nIf a reference type is unknown, then its attributes are not highlighted as unresolved even if you know that they should be:\n\n\n    def print_string(s):\n      print(s.abc())\n\nIn this code fragment `s` is always a string and `abc` should be highlighted as unresolved. However, `s`\ntype is inferred as `Any` and no warning is reported.\n\nThe IDE provides quick-fix actions to add missing references on-the-fly.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "lab_02/figures/arc.py",
+      "language": "Python",
+      "line": 1,
+      "offset": 6,
+      "length": 4,
+      "code": {
+        "startLine": 1,
+        "length": 4,
+        "offset": 5,
+        "surroundingCode": "from math import cos, sin\n\nfrom figures.point import Point"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "PyUnresolvedReferencesInspection"
+  },
+  "hash": "ca1eba924eacc2d199b9189723fad5053b8efc118332f5515b2f43f3cf9ec246"
 },{
   "tool": "Code Inspection",
   "category": "Python",

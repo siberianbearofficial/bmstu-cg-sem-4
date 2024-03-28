@@ -11,12 +11,12 @@
           "rules": [],
           "taxa": [
             {
-              "id": "EditorConfig",
-              "name": "EditorConfig"
-            },
-            {
               "id": "Python",
               "name": "Python"
+            },
+            {
+              "id": "EditorConfig",
+              "name": "EditorConfig"
             },
             {
               "id": "Shell script",
@@ -84,975 +84,6 @@
         },
         "extensions": [
           {
-            "name": "org.editorconfig.editorconfigjetbrains",
-            "version": "233.14702",
-            "rules": [
-              {
-                "id": "EditorConfigCharClassRedundancy",
-                "shortDescription": {
-                  "text": "Unnecessary character class"
-                },
-                "fullDescription": {
-                  "text": "Reports character classes that consist of a single character. Such classes can be simplified to a character, for example '[a]'→'a'.",
-                  "markdown": "Reports character classes that consist of a single character. Such classes can be simplified to a character, for example `[a]`→`a`."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigCharClassRedundancy",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigDeprecatedDescriptor",
-                "shortDescription": {
-                  "text": "Deprecated property"
-                },
-                "fullDescription": {
-                  "text": "Reports EditorConfig properties that are no longer supported.",
-                  "markdown": "Reports EditorConfig properties that are no longer supported."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigDeprecatedDescriptor",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigRootDeclarationUniqueness",
-                "shortDescription": {
-                  "text": "Extra top-level declaration"
-                },
-                "fullDescription": {
-                  "text": "Reports multiple top-level declarations. There can be only one optional “root=true” top-level declaration in the EditorConfig file. Using multiple top-level declarations is not allowed.",
-                  "markdown": "Reports multiple top-level declarations. There can be only one optional \"root=true\" top-level declaration in the EditorConfig file. Using multiple top-level declarations is not allowed."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigRootDeclarationUniqueness",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigNumerousWildcards",
-                "shortDescription": {
-                  "text": "Too many wildcards"
-                },
-                "fullDescription": {
-                  "text": "Reports sections that contain too many wildcards. Using a lot of wildcards may lead to performance issues.",
-                  "markdown": "Reports sections that contain too many wildcards. Using a lot of wildcards may lead to performance issues."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigNumerousWildcards",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigWildcardRedundancy",
-                "shortDescription": {
-                  "text": "Redundant wildcard"
-                },
-                "fullDescription": {
-                  "text": "Reports wildcards that become redundant when the “**” wildcard is used in the same section. The “**” wildcard defines a broader set of files than any other wildcard. That is why, any other wildcard used in the same section has no affect and can be removed.",
-                  "markdown": "Reports wildcards that become redundant when the \"\\*\\*\" wildcard is used in the same section.\n\n\nThe \"\\*\\*\" wildcard defines a broader set of files than any other wildcard.\nThat is why, any other wildcard used in the same section has no affect and can be removed."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigWildcardRedundancy",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigPartialOverride",
-                "shortDescription": {
-                  "text": "Overlapping sections"
-                },
-                "fullDescription": {
-                  "text": "Reports subsets of files specified in the current section that overlap with other subsets in other sections. For example: '[{foo,bar}]' and '[{foo,bas}]' both contain “foo”.",
-                  "markdown": "Reports subsets of files specified in the current section that overlap with other subsets in other sections. For example: `[{foo,bar}]` and `[{foo,bas}]` both contain \"foo\"."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigPartialOverride",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigEmptySection",
-                "shortDescription": {
-                  "text": "Empty section"
-                },
-                "fullDescription": {
-                  "text": "Reports sections that do not contain any EditorConfig properties.",
-                  "markdown": "Reports sections that do not contain any EditorConfig properties."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigEmptySection",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigHeaderUniqueness",
-                "shortDescription": {
-                  "text": "EditorConfig section is not unique"
-                },
-                "fullDescription": {
-                  "text": "Reports sections that define the same file pattern as other sections.",
-                  "markdown": "Reports sections that define the same file pattern as other sections."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigHeaderUniqueness",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigShadowingOption",
-                "shortDescription": {
-                  "text": "Overriding property"
-                },
-                "fullDescription": {
-                  "text": "Reports properties that override the same properties defined earlier in the file. For example: '[*.java]\nindent_size=4\n[{*.java,*.js}]\nindent_size=2' The second section includes the same files as '[*.java]' but also sets indent_size to value 2. Thus the first declaration 'indent_size=4'will be ignored.",
-                  "markdown": "Reports properties that override the same properties defined earlier in the file.\n\nFor example:\n\n\n    [*.java]\n    indent_size=4\n    [{*.java,*.js}]\n    indent_size=2\n\nThe second section includes the same files as `[*.java]` but also sets indent_size to value 2. Thus the first declaration `indent_size=4`will be ignored."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigShadowingOption",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigListAcceptability",
-                "shortDescription": {
-                  "text": "Unexpected value list"
-                },
-                "fullDescription": {
-                  "text": "Reports lists of values that are used in properties in which lists are not supported. In this case, only a single value can be specified.",
-                  "markdown": "Reports lists of values that are used in properties in which lists are not supported. In this case, only a single value can be specified."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigListAcceptability",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigShadowedOption",
-                "shortDescription": {
-                  "text": "Overridden property"
-                },
-                "fullDescription": {
-                  "text": "Reports properties that are already defined in other sections. For example: '[*.java]\nindent_size=4\n[{*.java,*.js}]\nindent_size=2' The second section includes all '*.java' files too but it also redefines indent_size. As a result the value 2 will be used for files matching '*.java'.",
-                  "markdown": "Reports properties that are already defined in other sections.\n\nFor example:\n\n\n    [*.java]\n    indent_size=4\n    [{*.java,*.js}]\n    indent_size=2\n\nThe second section includes all `*.java` files too but it also redefines indent_size. As a result the value 2 will be used for files matching `*.java`."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigShadowedOption",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigEmptyHeader",
-                "shortDescription": {
-                  "text": "Empty header"
-                },
-                "fullDescription": {
-                  "text": "Reports sections with an empty header. Section header must contain file path globs in the format similar to one supported by 'gitignore'.",
-                  "markdown": "Reports sections with an empty header. Section header must contain file path globs in the format similar to one supported by `gitignore`."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigEmptyHeader",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigValueCorrectness",
-                "shortDescription": {
-                  "text": "Invalid property value"
-                },
-                "fullDescription": {
-                  "text": "Reports property values that do not meet value restrictions. For example, some properties may be only “true” or “false”, others contain only integer numbers etc. If a value has a limited set of variants, use code completion to see all of them.",
-                  "markdown": "Reports property values that do not meet value restrictions. For example, some properties may be only \"true\" or \"false\", others contain only integer numbers etc. If a value has a limited set of variants, use code completion to see all of them."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigValueCorrectness",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigVerifyByCore",
-                "shortDescription": {
-                  "text": "Invalid .editorconfig file"
-                },
-                "fullDescription": {
-                  "text": "Verifies the whole file using the backing EditorConfig core library and reports any failures. Any such failure would prevent EditorConfig properties from being correctly applied.",
-                  "markdown": "Verifies the whole file using the backing EditorConfig core library and reports any failures. Any such failure would prevent EditorConfig properties from being correctly applied."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigVerifyByCore",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigValueUniqueness",
-                "shortDescription": {
-                  "text": "Non-unique list value"
-                },
-                "fullDescription": {
-                  "text": "Reports duplicates in lists of values.",
-                  "markdown": "Reports duplicates in lists of values."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigValueUniqueness",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigMissingRequiredDeclaration",
-                "shortDescription": {
-                  "text": "Required declarations are missing"
-                },
-                "fullDescription": {
-                  "text": "Reports properties that miss the required declarations. Refer to the documentation for more information.",
-                  "markdown": "Reports properties that miss the required declarations. Refer to the documentation for more information."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigMissingRequiredDeclaration",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigCharClassLetterRedundancy",
-                "shortDescription": {
-                  "text": "Duplicate character class letter"
-                },
-                "fullDescription": {
-                  "text": "Reports wildcard patterns in the EditorConfig section that contain a duplicate character in the character class, for example '[aa]'.",
-                  "markdown": "Reports wildcard patterns in the EditorConfig section that contain a duplicate character in the character class, for example `[aa]`."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigCharClassLetterRedundancy",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigKeyCorrectness",
-                "shortDescription": {
-                  "text": "Unknown property"
-                },
-                "fullDescription": {
-                  "text": "Reports properties that are not supported by the IDE. Note: some “ij” domain properties may require specific language plugins.",
-                  "markdown": "Reports properties that are not supported by the IDE. Note: some \"ij\" domain properties may require specific language plugins."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigKeyCorrectness",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigPatternEnumerationRedundancy",
-                "shortDescription": {
-                  "text": "Unnecessary braces"
-                },
-                "fullDescription": {
-                  "text": "Reports pattern lists that are either empty '{}' or contain just one pattern, for example '{foo}' in contrast to a list containing multiple patterns, for example '{foo,bar}'. In this case braces are handled as a part of the name. For example, the pattern '*.{a}' will match the file 'my.{a}' but not 'my.a'.",
-                  "markdown": "Reports pattern lists that are either empty `{}` or contain just one pattern, for example `{foo}` in contrast to a list containing multiple patterns, for example `{foo,bar}`. In this case braces are handled as a part of the name. For example, the pattern `*.{a}` will match the file `my.{a}` but not `my.a`."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigPatternEnumerationRedundancy",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigEncoding",
-                "shortDescription": {
-                  "text": "File encoding doesn't match EditorConfig charset"
-                },
-                "fullDescription": {
-                  "text": "Checks that current file encoding matches the encoding defined in \"charset\" property of .editorconfig file.",
-                  "markdown": "Checks that current file encoding matches the encoding defined in \"charset\" property of .editorconfig file."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigEncoding",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigSpaceInHeader",
-                "shortDescription": {
-                  "text": "Space in file pattern"
-                },
-                "fullDescription": {
-                  "text": "Reports space characters in wildcard patterns that affect pattern matching. If these characters are not intentional, they should be removed.",
-                  "markdown": "Reports space characters in wildcard patterns that affect pattern matching. If these characters are not intentional, they should be removed."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigSpaceInHeader",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigOptionRedundancy",
-                "shortDescription": {
-                  "text": "Redundant property"
-                },
-                "fullDescription": {
-                  "text": "Reports properties that are redundant when another applicable section already contains the same property and value. For example: '[*]\nindent_size=4\n[*.java]\nindent_size=4' are both applicable to '*.java' files and define the same 'indent_size' value.",
-                  "markdown": "Reports properties that are redundant when another applicable section already contains the same property and value.\n\n\nFor example:\n\n\n    [*]\n    indent_size=4\n    [*.java]\n    indent_size=4\n\nare both applicable to `*.java` files and define the same `indent_size` value."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigOptionRedundancy",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigRootDeclarationCorrectness",
-                "shortDescription": {
-                  "text": "Unexpected top-level declaration"
-                },
-                "fullDescription": {
-                  "text": "Reports unexpected top-level declarations. Top-level declarations other than “root=true” are not allowed in the EditorConfig file.",
-                  "markdown": "Reports unexpected top-level declarations. Top-level declarations other than \"root=true\" are not allowed in the EditorConfig file."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigRootDeclarationCorrectness",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigReferenceCorrectness",
-                "shortDescription": {
-                  "text": "Invalid reference"
-                },
-                "fullDescription": {
-                  "text": "Reports identifiers that are either unknown or have a wrong type.",
-                  "markdown": "Reports identifiers that are either unknown or have a wrong type."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigReferenceCorrectness",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigUnusedDeclaration",
-                "shortDescription": {
-                  "text": "Unused declaration"
-                },
-                "fullDescription": {
-                  "text": "Reports unused declarations. Such declarations can be removed.",
-                  "markdown": "Reports unused declarations. Such declarations can be removed."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigUnusedDeclaration",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigPairAcceptability",
-                "shortDescription": {
-                  "text": "Unexpected key-value pair"
-                },
-                "fullDescription": {
-                  "text": "Reports key-value pairs that are not allowed in the current context.",
-                  "markdown": "Reports key-value pairs that are not allowed in the current context."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigPairAcceptability",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigPatternRedundancy",
-                "shortDescription": {
-                  "text": "Duplicate or redundant pattern"
-                },
-                "fullDescription": {
-                  "text": "Reports file patterns that are redundant as there already are other patterns that define the same scope of files or even a broader one. For example, in '[{*.java,*}]' the first '*.java' pattern defines a narrower scope compared to '*'. That is why it is redundant and can be removed.",
-                  "markdown": "Reports file patterns that are redundant as there already are other patterns that define the same scope of files or even a broader one. For example, in `[{*.java,*}]` the first `*.java` pattern defines a narrower scope compared to `*`. That is why it is redundant and can be removed."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigPatternRedundancy",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigNoMatchingFiles",
-                "shortDescription": {
-                  "text": "No matching files"
-                },
-                "fullDescription": {
-                  "text": "Reports sections with wildcard patterns that do not match any files under the directory in which the '.editorconfig' file is located.",
-                  "markdown": "Reports sections with wildcard patterns that do not match any files under the directory in which the `.editorconfig` file is located."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigNoMatchingFiles",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "EditorConfigUnexpectedComma",
-                "shortDescription": {
-                  "text": "Unexpected comma"
-                },
-                "fullDescription": {
-                  "text": "Reports commas that cannot be used in the current context. Commas are allowed only as separators for values in lists.",
-                  "markdown": "Reports commas that cannot be used in the current context. Commas are allowed only as separators for values in lists."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "EditorConfigUnexpectedComma",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "EditorConfig",
-                      "index": 0,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "language": "en-US",
-            "contents": [
-              "localizedData",
-              "nonLocalizedData"
-            ],
-            "isComprehensive": false
-          },
-          {
             "name": "PythonCore",
             "version": "233.14702",
             "rules": [
@@ -1078,7 +109,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1111,7 +142,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1144,7 +175,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1177,7 +208,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1210,7 +241,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1243,7 +274,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1276,7 +307,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1309,7 +340,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1342,7 +373,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1375,7 +406,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1408,7 +439,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1441,7 +472,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1474,7 +505,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1507,7 +538,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1540,7 +571,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1573,7 +604,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1606,7 +637,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1639,40 +670,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "PoetryPackageVersionsInspection",
-                "shortDescription": {
-                  "text": "Poetry package versions"
-                },
-                "fullDescription": {
-                  "text": "Reports outdated versions of packages in '[tool.poetry.dependencies]' and '[tool.poetry.dev-dependencies]' sections of 'pyproject.toml'.",
-                  "markdown": "Reports outdated versions of packages in `[tool.poetry.dependencies]` and `[tool.poetry.dev-dependencies]`\nsections of `pyproject.toml`."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "PoetryPackageVersions",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1705,7 +703,40 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "PoetryPackageVersionsInspection",
+                "shortDescription": {
+                  "text": "Poetry package versions"
+                },
+                "fullDescription": {
+                  "text": "Reports outdated versions of packages in '[tool.poetry.dependencies]' and '[tool.poetry.dev-dependencies]' sections of 'pyproject.toml'.",
+                  "markdown": "Reports outdated versions of packages in `[tool.poetry.dependencies]` and `[tool.poetry.dev-dependencies]`\nsections of `pyproject.toml`."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "PoetryPackageVersions",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Python",
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1738,7 +769,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1771,7 +802,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1804,40 +835,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "CommandLineInspection",
-                "shortDescription": {
-                  "text": "Incorrect CLI syntax"
-                },
-                "fullDescription": {
-                  "text": "Reports the problems if the arguments of the command you type in the console are not in the proper order. The inspection also verifies that option names and arguments are correct. Do not disable the inspection if you are going to use command-line interfaces like manage.py in Django.",
-                  "markdown": "Reports the problems if the arguments of the command you type in the console are not in the proper order. The inspection also verifies\nthat option names and arguments are correct.\n\nDo not disable the inspection if you are going to use command-line interfaces like [manage.py in Django](https://www.jetbrains.com/help/pycharm/running-manage-py.html)."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "CommandLineInspection",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1870,7 +868,40 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "CommandLineInspection",
+                "shortDescription": {
+                  "text": "Incorrect CLI syntax"
+                },
+                "fullDescription": {
+                  "text": "Reports the problems if the arguments of the command you type in the console are not in the proper order. The inspection also verifies that option names and arguments are correct. Do not disable the inspection if you are going to use command-line interfaces like manage.py in Django.",
+                  "markdown": "Reports the problems if the arguments of the command you type in the console are not in the proper order. The inspection also verifies\nthat option names and arguments are correct.\n\nDo not disable the inspection if you are going to use command-line interfaces like [manage.py in Django](https://www.jetbrains.com/help/pycharm/running-manage-py.html)."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "CommandLineInspection",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Python",
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1903,7 +934,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -1936,40 +967,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "PyChainedComparisonsInspection",
-                "shortDescription": {
-                  "text": "Too complex chained comparisons"
-                },
-                "fullDescription": {
-                  "text": "Reports chained comparisons that can be simplified. Example: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if x >= xmin and x <= xmax:\n          pass' The IDE offers to simplify 'if x >= xmin and x <= xmax'. When the quick-fix is applied, the code changes to: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if xmin <= x <= xmax:\n          pass'",
-                  "markdown": "Reports chained comparisons that can be simplified.\n\n**Example:**\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if x >= xmin and x <= xmax:\n              pass\n\nThe IDE offers to simplify `if x >= xmin and x <= xmax`.\nWhen the quick-fix is applied, the code changes to:\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if xmin <= x <= xmax:\n              pass\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "PyChainedComparisons",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2002,7 +1000,40 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "PyChainedComparisonsInspection",
+                "shortDescription": {
+                  "text": "Too complex chained comparisons"
+                },
+                "fullDescription": {
+                  "text": "Reports chained comparisons that can be simplified. Example: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if x >= xmin and x <= xmax:\n          pass' The IDE offers to simplify 'if x >= xmin and x <= xmax'. When the quick-fix is applied, the code changes to: 'def do_comparison(x):\n      xmin = 10\n      xmax = 100\n      if xmin <= x <= xmax:\n          pass'",
+                  "markdown": "Reports chained comparisons that can be simplified.\n\n**Example:**\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if x >= xmin and x <= xmax:\n              pass\n\nThe IDE offers to simplify `if x >= xmin and x <= xmax`.\nWhen the quick-fix is applied, the code changes to:\n\n\n      def do_comparison(x):\n          xmin = 10\n          xmax = 100\n          if xmin <= x <= xmax:\n              pass\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "PyChainedComparisons",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Python",
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2035,7 +1066,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2068,7 +1099,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2101,7 +1132,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2134,7 +1165,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2167,7 +1198,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2200,7 +1231,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2233,7 +1264,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2266,7 +1297,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2299,7 +1330,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2332,7 +1363,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2365,7 +1396,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2398,7 +1429,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2431,7 +1462,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2464,7 +1495,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2497,7 +1528,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2530,7 +1561,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2563,7 +1594,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2596,7 +1627,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2629,7 +1660,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2662,7 +1693,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2695,7 +1726,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2728,7 +1759,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2761,40 +1792,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "PyOldStyleClassesInspection",
-                "shortDescription": {
-                  "text": "Old-style class contains new-style class features"
-                },
-                "fullDescription": {
-                  "text": "Reports occurrences of new-style class features in old-style classes. The inspection highlights '__slots__', '__getattribute__', and 'super()' inside old-style classes.",
-                  "markdown": "Reports occurrences of\n[new-style class features](https://www.python.org/doc/newstyle/)\nin old-style classes. The inspection highlights\n`__slots__`, `__getattribute__`, and `super()`\ninside old-style classes."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "PyOldStyleClasses",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2827,7 +1825,40 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "PyOldStyleClassesInspection",
+                "shortDescription": {
+                  "text": "Old-style class contains new-style class features"
+                },
+                "fullDescription": {
+                  "text": "Reports occurrences of new-style class features in old-style classes. The inspection highlights '__slots__', '__getattribute__', and 'super()' inside old-style classes.",
+                  "markdown": "Reports occurrences of\n[new-style class features](https://www.python.org/doc/newstyle/)\nin old-style classes. The inspection highlights\n`__slots__`, `__getattribute__`, and `super()`\ninside old-style classes."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "PyOldStyleClasses",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Python",
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2860,7 +1891,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2893,7 +1924,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2926,7 +1957,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2959,7 +1990,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -2992,7 +2023,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3025,7 +2056,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3058,7 +2089,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3091,7 +2122,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3124,7 +2155,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3157,7 +2188,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3190,7 +2221,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3223,7 +2254,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3256,7 +2287,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3289,7 +2320,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3322,7 +2353,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3355,7 +2386,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3388,7 +2419,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3421,7 +2452,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3454,7 +2485,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3487,7 +2518,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3520,7 +2551,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3553,7 +2584,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3586,7 +2617,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3619,7 +2650,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3652,7 +2683,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3685,7 +2716,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3718,7 +2749,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3751,40 +2782,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "PyprojectInspection",
-                "shortDescription": {
-                  "text": "Depencencies in pyproject.toml"
-                },
-                "fullDescription": {
-                  "text": "Reports unsatisfied dependencies, declared [project.dependencies] table in pyproject.toml. Shows a quick-fix to install missing packages.",
-                  "markdown": "Reports unsatisfied dependencies, declared \\[project.dependencies\\] table in pyproject.toml.\n\n\nShows a quick-fix to install missing packages."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "PyprojectInspection",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3817,7 +2815,40 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "PyprojectInspection",
+                "shortDescription": {
+                  "text": "Depencencies in pyproject.toml"
+                },
+                "fullDescription": {
+                  "text": "Reports unsatisfied dependencies, declared [project.dependencies] table in pyproject.toml. Shows a quick-fix to install missing packages.",
+                  "markdown": "Reports unsatisfied dependencies, declared \\[project.dependencies\\] table in pyproject.toml.\n\n\nShows a quick-fix to install missing packages."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "PyprojectInspection",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Python",
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3850,7 +2881,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3883,7 +2914,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3916,7 +2947,7 @@
                   {
                     "target": {
                       "id": "Python",
-                      "index": 1,
+                      "index": 0,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -3949,6 +2980,975 @@
                   {
                     "target": {
                       "id": "Python",
+                      "index": 0,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "language": "en-US",
+            "contents": [
+              "localizedData",
+              "nonLocalizedData"
+            ],
+            "isComprehensive": false
+          },
+          {
+            "name": "org.editorconfig.editorconfigjetbrains",
+            "version": "233.14702",
+            "rules": [
+              {
+                "id": "EditorConfigCharClassRedundancy",
+                "shortDescription": {
+                  "text": "Unnecessary character class"
+                },
+                "fullDescription": {
+                  "text": "Reports character classes that consist of a single character. Such classes can be simplified to a character, for example '[a]'→'a'.",
+                  "markdown": "Reports character classes that consist of a single character. Such classes can be simplified to a character, for example `[a]`→`a`."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigCharClassRedundancy",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigDeprecatedDescriptor",
+                "shortDescription": {
+                  "text": "Deprecated property"
+                },
+                "fullDescription": {
+                  "text": "Reports EditorConfig properties that are no longer supported.",
+                  "markdown": "Reports EditorConfig properties that are no longer supported."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigDeprecatedDescriptor",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigRootDeclarationUniqueness",
+                "shortDescription": {
+                  "text": "Extra top-level declaration"
+                },
+                "fullDescription": {
+                  "text": "Reports multiple top-level declarations. There can be only one optional “root=true” top-level declaration in the EditorConfig file. Using multiple top-level declarations is not allowed.",
+                  "markdown": "Reports multiple top-level declarations. There can be only one optional \"root=true\" top-level declaration in the EditorConfig file. Using multiple top-level declarations is not allowed."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigRootDeclarationUniqueness",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigNumerousWildcards",
+                "shortDescription": {
+                  "text": "Too many wildcards"
+                },
+                "fullDescription": {
+                  "text": "Reports sections that contain too many wildcards. Using a lot of wildcards may lead to performance issues.",
+                  "markdown": "Reports sections that contain too many wildcards. Using a lot of wildcards may lead to performance issues."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigNumerousWildcards",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigWildcardRedundancy",
+                "shortDescription": {
+                  "text": "Redundant wildcard"
+                },
+                "fullDescription": {
+                  "text": "Reports wildcards that become redundant when the “**” wildcard is used in the same section. The “**” wildcard defines a broader set of files than any other wildcard. That is why, any other wildcard used in the same section has no affect and can be removed.",
+                  "markdown": "Reports wildcards that become redundant when the \"\\*\\*\" wildcard is used in the same section.\n\n\nThe \"\\*\\*\" wildcard defines a broader set of files than any other wildcard.\nThat is why, any other wildcard used in the same section has no affect and can be removed."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigWildcardRedundancy",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigPartialOverride",
+                "shortDescription": {
+                  "text": "Overlapping sections"
+                },
+                "fullDescription": {
+                  "text": "Reports subsets of files specified in the current section that overlap with other subsets in other sections. For example: '[{foo,bar}]' and '[{foo,bas}]' both contain “foo”.",
+                  "markdown": "Reports subsets of files specified in the current section that overlap with other subsets in other sections. For example: `[{foo,bar}]` and `[{foo,bas}]` both contain \"foo\"."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigPartialOverride",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigEmptySection",
+                "shortDescription": {
+                  "text": "Empty section"
+                },
+                "fullDescription": {
+                  "text": "Reports sections that do not contain any EditorConfig properties.",
+                  "markdown": "Reports sections that do not contain any EditorConfig properties."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigEmptySection",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigHeaderUniqueness",
+                "shortDescription": {
+                  "text": "EditorConfig section is not unique"
+                },
+                "fullDescription": {
+                  "text": "Reports sections that define the same file pattern as other sections.",
+                  "markdown": "Reports sections that define the same file pattern as other sections."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigHeaderUniqueness",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigShadowingOption",
+                "shortDescription": {
+                  "text": "Overriding property"
+                },
+                "fullDescription": {
+                  "text": "Reports properties that override the same properties defined earlier in the file. For example: '[*.java]\nindent_size=4\n[{*.java,*.js}]\nindent_size=2' The second section includes the same files as '[*.java]' but also sets indent_size to value 2. Thus the first declaration 'indent_size=4'will be ignored.",
+                  "markdown": "Reports properties that override the same properties defined earlier in the file.\n\nFor example:\n\n\n    [*.java]\n    indent_size=4\n    [{*.java,*.js}]\n    indent_size=2\n\nThe second section includes the same files as `[*.java]` but also sets indent_size to value 2. Thus the first declaration `indent_size=4`will be ignored."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigShadowingOption",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigListAcceptability",
+                "shortDescription": {
+                  "text": "Unexpected value list"
+                },
+                "fullDescription": {
+                  "text": "Reports lists of values that are used in properties in which lists are not supported. In this case, only a single value can be specified.",
+                  "markdown": "Reports lists of values that are used in properties in which lists are not supported. In this case, only a single value can be specified."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigListAcceptability",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigShadowedOption",
+                "shortDescription": {
+                  "text": "Overridden property"
+                },
+                "fullDescription": {
+                  "text": "Reports properties that are already defined in other sections. For example: '[*.java]\nindent_size=4\n[{*.java,*.js}]\nindent_size=2' The second section includes all '*.java' files too but it also redefines indent_size. As a result the value 2 will be used for files matching '*.java'.",
+                  "markdown": "Reports properties that are already defined in other sections.\n\nFor example:\n\n\n    [*.java]\n    indent_size=4\n    [{*.java,*.js}]\n    indent_size=2\n\nThe second section includes all `*.java` files too but it also redefines indent_size. As a result the value 2 will be used for files matching `*.java`."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigShadowedOption",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigEmptyHeader",
+                "shortDescription": {
+                  "text": "Empty header"
+                },
+                "fullDescription": {
+                  "text": "Reports sections with an empty header. Section header must contain file path globs in the format similar to one supported by 'gitignore'.",
+                  "markdown": "Reports sections with an empty header. Section header must contain file path globs in the format similar to one supported by `gitignore`."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigEmptyHeader",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigValueCorrectness",
+                "shortDescription": {
+                  "text": "Invalid property value"
+                },
+                "fullDescription": {
+                  "text": "Reports property values that do not meet value restrictions. For example, some properties may be only “true” or “false”, others contain only integer numbers etc. If a value has a limited set of variants, use code completion to see all of them.",
+                  "markdown": "Reports property values that do not meet value restrictions. For example, some properties may be only \"true\" or \"false\", others contain only integer numbers etc. If a value has a limited set of variants, use code completion to see all of them."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigValueCorrectness",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigVerifyByCore",
+                "shortDescription": {
+                  "text": "Invalid .editorconfig file"
+                },
+                "fullDescription": {
+                  "text": "Verifies the whole file using the backing EditorConfig core library and reports any failures. Any such failure would prevent EditorConfig properties from being correctly applied.",
+                  "markdown": "Verifies the whole file using the backing EditorConfig core library and reports any failures. Any such failure would prevent EditorConfig properties from being correctly applied."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigVerifyByCore",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigValueUniqueness",
+                "shortDescription": {
+                  "text": "Non-unique list value"
+                },
+                "fullDescription": {
+                  "text": "Reports duplicates in lists of values.",
+                  "markdown": "Reports duplicates in lists of values."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigValueUniqueness",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigMissingRequiredDeclaration",
+                "shortDescription": {
+                  "text": "Required declarations are missing"
+                },
+                "fullDescription": {
+                  "text": "Reports properties that miss the required declarations. Refer to the documentation for more information.",
+                  "markdown": "Reports properties that miss the required declarations. Refer to the documentation for more information."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigMissingRequiredDeclaration",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigCharClassLetterRedundancy",
+                "shortDescription": {
+                  "text": "Duplicate character class letter"
+                },
+                "fullDescription": {
+                  "text": "Reports wildcard patterns in the EditorConfig section that contain a duplicate character in the character class, for example '[aa]'.",
+                  "markdown": "Reports wildcard patterns in the EditorConfig section that contain a duplicate character in the character class, for example `[aa]`."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigCharClassLetterRedundancy",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigKeyCorrectness",
+                "shortDescription": {
+                  "text": "Unknown property"
+                },
+                "fullDescription": {
+                  "text": "Reports properties that are not supported by the IDE. Note: some “ij” domain properties may require specific language plugins.",
+                  "markdown": "Reports properties that are not supported by the IDE. Note: some \"ij\" domain properties may require specific language plugins."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigKeyCorrectness",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigPatternEnumerationRedundancy",
+                "shortDescription": {
+                  "text": "Unnecessary braces"
+                },
+                "fullDescription": {
+                  "text": "Reports pattern lists that are either empty '{}' or contain just one pattern, for example '{foo}' in contrast to a list containing multiple patterns, for example '{foo,bar}'. In this case braces are handled as a part of the name. For example, the pattern '*.{a}' will match the file 'my.{a}' but not 'my.a'.",
+                  "markdown": "Reports pattern lists that are either empty `{}` or contain just one pattern, for example `{foo}` in contrast to a list containing multiple patterns, for example `{foo,bar}`. In this case braces are handled as a part of the name. For example, the pattern `*.{a}` will match the file `my.{a}` but not `my.a`."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigPatternEnumerationRedundancy",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigEncoding",
+                "shortDescription": {
+                  "text": "File encoding doesn't match EditorConfig charset"
+                },
+                "fullDescription": {
+                  "text": "Checks that current file encoding matches the encoding defined in \"charset\" property of .editorconfig file.",
+                  "markdown": "Checks that current file encoding matches the encoding defined in \"charset\" property of .editorconfig file."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigEncoding",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigSpaceInHeader",
+                "shortDescription": {
+                  "text": "Space in file pattern"
+                },
+                "fullDescription": {
+                  "text": "Reports space characters in wildcard patterns that affect pattern matching. If these characters are not intentional, they should be removed.",
+                  "markdown": "Reports space characters in wildcard patterns that affect pattern matching. If these characters are not intentional, they should be removed."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigSpaceInHeader",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigOptionRedundancy",
+                "shortDescription": {
+                  "text": "Redundant property"
+                },
+                "fullDescription": {
+                  "text": "Reports properties that are redundant when another applicable section already contains the same property and value. For example: '[*]\nindent_size=4\n[*.java]\nindent_size=4' are both applicable to '*.java' files and define the same 'indent_size' value.",
+                  "markdown": "Reports properties that are redundant when another applicable section already contains the same property and value.\n\n\nFor example:\n\n\n    [*]\n    indent_size=4\n    [*.java]\n    indent_size=4\n\nare both applicable to `*.java` files and define the same `indent_size` value."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigOptionRedundancy",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigRootDeclarationCorrectness",
+                "shortDescription": {
+                  "text": "Unexpected top-level declaration"
+                },
+                "fullDescription": {
+                  "text": "Reports unexpected top-level declarations. Top-level declarations other than “root=true” are not allowed in the EditorConfig file.",
+                  "markdown": "Reports unexpected top-level declarations. Top-level declarations other than \"root=true\" are not allowed in the EditorConfig file."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigRootDeclarationCorrectness",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigReferenceCorrectness",
+                "shortDescription": {
+                  "text": "Invalid reference"
+                },
+                "fullDescription": {
+                  "text": "Reports identifiers that are either unknown or have a wrong type.",
+                  "markdown": "Reports identifiers that are either unknown or have a wrong type."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigReferenceCorrectness",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigUnusedDeclaration",
+                "shortDescription": {
+                  "text": "Unused declaration"
+                },
+                "fullDescription": {
+                  "text": "Reports unused declarations. Such declarations can be removed.",
+                  "markdown": "Reports unused declarations. Such declarations can be removed."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigUnusedDeclaration",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigPairAcceptability",
+                "shortDescription": {
+                  "text": "Unexpected key-value pair"
+                },
+                "fullDescription": {
+                  "text": "Reports key-value pairs that are not allowed in the current context.",
+                  "markdown": "Reports key-value pairs that are not allowed in the current context."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigPairAcceptability",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigPatternRedundancy",
+                "shortDescription": {
+                  "text": "Duplicate or redundant pattern"
+                },
+                "fullDescription": {
+                  "text": "Reports file patterns that are redundant as there already are other patterns that define the same scope of files or even a broader one. For example, in '[{*.java,*}]' the first '*.java' pattern defines a narrower scope compared to '*'. That is why it is redundant and can be removed.",
+                  "markdown": "Reports file patterns that are redundant as there already are other patterns that define the same scope of files or even a broader one. For example, in `[{*.java,*}]` the first `*.java` pattern defines a narrower scope compared to `*`. That is why it is redundant and can be removed."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigPatternRedundancy",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigNoMatchingFiles",
+                "shortDescription": {
+                  "text": "No matching files"
+                },
+                "fullDescription": {
+                  "text": "Reports sections with wildcard patterns that do not match any files under the directory in which the '.editorconfig' file is located.",
+                  "markdown": "Reports sections with wildcard patterns that do not match any files under the directory in which the `.editorconfig` file is located."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigNoMatchingFiles",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "EditorConfigUnexpectedComma",
+                "shortDescription": {
+                  "text": "Unexpected comma"
+                },
+                "fullDescription": {
+                  "text": "Reports commas that cannot be used in the current context. Commas are allowed only as separators for values in lists.",
+                  "markdown": "Reports commas that cannot be used in the current context. Commas are allowed only as separators for values in lists."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "EditorConfigUnexpectedComma",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "EditorConfig",
                       "index": 1,
                       "toolComponent": {
                         "name": "QDPYC"
@@ -5767,39 +5767,6 @@
                 ]
               },
               {
-                "id": "LossyEncoding",
-                "shortDescription": {
-                  "text": "Lossy encoding"
-                },
-                "fullDescription": {
-                  "text": "Reports characters that cannot be displayed because of the current document encoding. Examples: If you type international characters in a document with the US-ASCII charset, some characters will be lost on save. If you load a UTF-8-encoded file using the ISO-8859-1 one-byte charset, some characters will be displayed incorrectly. You can fix this by changing the file encoding either by specifying the encoding directly in the file, e.g. by editing 'encoding=' attribute in the XML prolog of XML file, or by changing the corresponding options in Settings | Editor | File Encodings.",
-                  "markdown": "Reports characters that cannot be displayed because of the current document encoding.\n\nExamples:\n\n* If you type international characters in a document with the **US-ASCII** charset, some characters will be lost on save.\n* If you load a **UTF-8** -encoded file using the **ISO-8859-1** one-byte charset, some characters will be displayed incorrectly.\n\nYou can fix this by changing the file encoding\neither by specifying the encoding directly in the file, e.g. by editing `encoding=` attribute in the XML prolog of XML file,\nor by changing the corresponding options in **Settings \\| Editor \\| File Encodings**."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "LossyEncoding",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Internationalization",
-                      "index": 13,
-                      "toolComponent": {
-                        "name": "QDPYC"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RegExpEscapedMetaCharacter",
                 "shortDescription": {
                   "text": "Escaped meta character"
@@ -5822,6 +5789,39 @@
                     "target": {
                       "id": "RegExp",
                       "index": 6,
+                      "toolComponent": {
+                        "name": "QDPYC"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "LossyEncoding",
+                "shortDescription": {
+                  "text": "Lossy encoding"
+                },
+                "fullDescription": {
+                  "text": "Reports characters that cannot be displayed because of the current document encoding. Examples: If you type international characters in a document with the US-ASCII charset, some characters will be lost on save. If you load a UTF-8-encoded file using the ISO-8859-1 one-byte charset, some characters will be displayed incorrectly. You can fix this by changing the file encoding either by specifying the encoding directly in the file, e.g. by editing 'encoding=' attribute in the XML prolog of XML file, or by changing the corresponding options in Settings | Editor | File Encodings.",
+                  "markdown": "Reports characters that cannot be displayed because of the current document encoding.\n\nExamples:\n\n* If you type international characters in a document with the **US-ASCII** charset, some characters will be lost on save.\n* If you load a **UTF-8** -encoded file using the **ISO-8859-1** one-byte charset, some characters will be displayed incorrectly.\n\nYou can fix this by changing the file encoding\neither by specifying the encoding directly in the file, e.g. by editing `encoding=` attribute in the XML prolog of XML file,\nor by changing the corresponding options in **Settings \\| Editor \\| File Encodings**."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "LossyEncoding",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Internationalization",
+                      "index": 13,
                       "toolComponent": {
                         "name": "QDPYC"
                       }
@@ -6675,7 +6675,7 @@
       },
       "invocations": [
         {
-          "startTimeUtc": "2024-03-27T03:36:24.690873185Z",
+          "startTimeUtc": "2024-03-28T20:33:07.273317651Z",
           "exitCode": 0,
           "toolExecutionNotifications": [
             {
@@ -6683,7 +6683,7 @@
                 "text": "Analysis by sanity inspection \"Unresolved references\" was suspended due to high number of problems."
               },
               "level": "error",
-              "timeUtc": "2024-03-27T03:36:28.187403848Z",
+              "timeUtc": "2024-03-28T20:33:10.379072181Z",
               "properties": {
                 "qodanaKind": "sanityFailure"
               }
@@ -6696,7 +6696,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/siberianbearofficial/bmstu-cg-sem-4.git",
-          "revisionId": "21e2a4a00b0c534b60bf9f257d9bcf877b65cf94",
+          "revisionId": "5179ebd5d210dfa7b194e33ed5ee3d9f9aae985e",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4",
@@ -6984,10 +6984,10 @@
         }
       ],
       "automationDetails": {
-        "id": "project/qodana/2024-03-27",
-        "guid": "6a39d42c-9bae-4988-9a72-31bdc572774f",
+        "id": "project/qodana/2024-03-28",
+        "guid": "93cc52e8-8e5e-426b-adfd-d34d58f393b9",
         "properties": {
-          "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/8446282326"
+          "jobUrl": "https://github.com/siberianbearofficial/bmstu-cg-sem-4/actions/runs/8473342868"
         }
       },
       "newlineSequences": [
@@ -7146,6 +7146,58 @@
             ],
             "partialFingerprints": {
               "equalIndicator/v1": "33a73babab6d8c7efedd19351ee3bb7ae40ac702c4f7b9b4a11f38144cd20029"
+            },
+            "properties": {
+              "ideaSeverity": "WARNING",
+              "qodanaSeverity": "High"
+            }
+          },
+          {
+            "ruleId": "PyInterpreterInspection",
+            "kind": "fail",
+            "level": "warning",
+            "message": {
+              "text": "No Python interpreter configured for the project",
+              "markdown": "No Python interpreter configured for the project"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/figures/arc.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 58,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 95,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "352bfbd4b77210a0cae8d3f7c27c3e3cfe1d6af78299ea343d5ca22016ae5c6a"
             },
             "properties": {
               "ideaSeverity": "WARNING",
@@ -7372,58 +7424,6 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/ui/__init__.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 60,
-                    "snippet": {
-                      "text": "from ui.button import Button\nfrom ui.spinbox import SpinBox\n"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 60,
-                    "snippet": {
-                      "text": "from ui.button import Button\nfrom ui.spinbox import SpinBox\n"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "86f8267423994d7155cfe3b2820f7f6ffe9195a3181848b52ae491ae3e3d49e1"
-            },
-            "properties": {
-              "ideaSeverity": "WARNING",
-              "qodanaSeverity": "High"
-            }
-          },
-          {
-            "ruleId": "PyInterpreterInspection",
-            "kind": "fail",
-            "level": "warning",
-            "message": {
-              "text": "No Python interpreter configured for the project",
-              "markdown": "No Python interpreter configured for the project"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
                     "uri": "lab_01/points_table.py",
                     "uriBaseId": "SRCROOT"
                   },
@@ -7528,58 +7528,6 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/ui/button.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 56,
-                    "snippet": {
-                      "text": "from typing import Callable\n\nfrom PyQt6.QtCore import Qt"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 97,
-                    "snippet": {
-                      "text": "from typing import Callable\n\nfrom PyQt6.QtCore import Qt\nfrom PyQtUIkit.widgets import KitButton\n"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "9988cbe94126b70bec1ee82c57163ce5934141fa80a8d9a9f6f046624d799f89"
-            },
-            "properties": {
-              "ideaSeverity": "WARNING",
-              "qodanaSeverity": "High"
-            }
-          },
-          {
-            "ruleId": "PyInterpreterInspection",
-            "kind": "fail",
-            "level": "warning",
-            "message": {
-              "text": "No Python interpreter configured for the project",
-              "markdown": "No Python interpreter configured for the project"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
                     "uri": "lab_01/figures/point.py",
                     "uriBaseId": "SRCROOT"
                   },
@@ -7632,16 +7580,16 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/figures/arc.py",
+                    "uri": "lab_02/main.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 62,
+                    "charLength": 82,
                     "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point"
+                      "text": "\"\"\"\nЛабораторная работа №2 по курсу 'Компьютерная Графика'\nОрлов Алексей (ИУ7-34Б)"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7649,9 +7597,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 99,
+                    "charLength": 87,
                     "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+                      "text": "\"\"\"\nЛабораторная работа №2 по курсу 'Компьютерная Графика'\nОрлов Алексей (ИУ7-34Б)\n\"\"\"\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7665,7 +7613,7 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "b1afbbc32fdb0aeac18a21cd0f0e608ff755778df20de7be56b58891c71a8e27"
+              "equalIndicator/v1": "9b88073ba70807f48f75fe05346931ff680abfda5016f27520b556ac6f3bbd01"
             },
             "properties": {
               "ideaSeverity": "WARNING",
@@ -7840,58 +7788,6 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/main.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 82,
-                    "snippet": {
-                      "text": "\"\"\"\nЛабораторная работа №2 по курсу \"Компьютерная Графика\"\nОрлов Алексей (ИУ7-34Б)"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 87,
-                    "snippet": {
-                      "text": "\"\"\"\nЛабораторная работа №2 по курсу \"Компьютерная Графика\"\nОрлов Алексей (ИУ7-34Б)\n\"\"\"\n"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "d307d429f9d7b66f075aa549f9731decab24dc1409c41725f0d24dfd34703588"
-            },
-            "properties": {
-              "ideaSeverity": "WARNING",
-              "qodanaSeverity": "High"
-            }
-          },
-          {
-            "ruleId": "PyInterpreterInspection",
-            "kind": "fail",
-            "level": "warning",
-            "message": {
-              "text": "No Python interpreter configured for the project",
-              "markdown": "No Python interpreter configured for the project"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
                     "uri": "lab_01/point_dialog.py",
                     "uriBaseId": "SRCROOT"
                   },
@@ -7933,27 +7829,27 @@
             }
           },
           {
-            "ruleId": "PyUnresolvedReferencesInspection",
+            "ruleId": "PyInterpreterInspection",
             "kind": "fail",
-            "level": "error",
+            "level": "warning",
             "message": {
-              "text": "Unresolved reference 'math'",
-              "markdown": "Unresolved reference 'math'"
+              "text": "No Python interpreter configured for the project",
+              "markdown": "No Python interpreter configured for the project"
             },
             "locations": [
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/figures/arc.py",
+                    "uri": "lab_02/ui/button.py",
                     "uriBaseId": "SRCROOT"
                   },
                   "region": {
                     "startLine": 1,
-                    "startColumn": 6,
-                    "charOffset": 5,
-                    "charLength": 4,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 83,
                     "snippet": {
-                      "text": "math"
+                      "text": "from typing import Callable\n\nfrom PyQtUIkit.widgets import KitButton, KitIconButton"
                     },
                     "sourceLanguage": "Python"
                   },
@@ -7961,9 +7857,9 @@
                     "startLine": 1,
                     "startColumn": 1,
                     "charOffset": 0,
-                    "charLength": 62,
+                    "charLength": 85,
                     "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point"
+                      "text": "from typing import Callable\n\nfrom PyQtUIkit.widgets import KitButton, KitIconButton\n\n"
                     },
                     "sourceLanguage": "Python"
                   }
@@ -7977,11 +7873,63 @@
               }
             ],
             "partialFingerprints": {
-              "equalIndicator/v1": "165b9c54c706eb451badd1f0bb7901913ee011a81b32a13c33391527247c5cd2"
+              "equalIndicator/v1": "f18c014b1d54e26ea29b813fb97b04213cef1e31044f12f22dd2a6a8b3d17fc1"
             },
             "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
+              "ideaSeverity": "WARNING",
+              "qodanaSeverity": "High"
+            }
+          },
+          {
+            "ruleId": "PyInterpreterInspection",
+            "kind": "fail",
+            "level": "warning",
+            "message": {
+              "text": "No Python interpreter configured for the project",
+              "markdown": "No Python interpreter configured for the project"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/ui/__init__.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 72,
+                    "snippet": {
+                      "text": "from ui.button import Button, IconButton\nfrom ui.spinbox import SpinBox\n"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 72,
+                    "snippet": {
+                      "text": "from ui.button import Button, IconButton\nfrom ui.spinbox import SpinBox\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "f35754129dfd7d5598c729849b831725b2c899a7bdf8059ce0686dd003584d30"
+            },
+            "properties": {
+              "ideaSeverity": "WARNING",
+              "qodanaSeverity": "High"
             }
           },
           {
@@ -8145,58 +8093,6 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'cos'",
-              "markdown": "Unresolved reference 'cos'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_02/figures/arc.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 18,
-                    "charOffset": 17,
-                    "charLength": 3,
-                    "snippet": {
-                      "text": "cos"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 62,
-                    "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "3c972e77bfd0bc46d6e72db36b6afeccecaca666660d04a191dbf40b3da26e1a"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
               "text": "Unresolved reference 'figures'",
               "markdown": "Unresolved reference 'figures'"
             },
@@ -8301,58 +8197,6 @@
             "kind": "fail",
             "level": "error",
             "message": {
-              "text": "Unresolved reference 'pi'",
-              "markdown": "Unresolved reference 'pi'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "lab_02/figures/arc.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 28,
-                    "charOffset": 27,
-                    "charLength": 2,
-                    "snippet": {
-                      "text": "pi"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 62,
-                    "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "509e6db8f7e76c1486d96926b0cf43bf70e36d53242563bb9984259c725864d2"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
               "text": "Unresolved reference 'Arc'",
               "markdown": "Unresolved reference 'Arc'"
             },
@@ -8394,6 +8238,110 @@
             ],
             "partialFingerprints": {
               "equalIndicator/v1": "59fce9074ba8a6c2d48b4c78fe8f73d71772f7fa1c3a682a518259f76f4a395a"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'sin'",
+              "markdown": "Unresolved reference 'sin'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/figures/arc.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 23,
+                    "charOffset": 22,
+                    "charLength": 3,
+                    "snippet": {
+                      "text": "sin"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 58,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "5d1e559aa82748cf5bba3b37611f6cd4dcc1c4389d211ed478bef3dfd67a6a2f"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'cos'",
+              "markdown": "Unresolved reference 'cos'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/figures/arc.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 18,
+                    "charOffset": 17,
+                    "charLength": 3,
+                    "snippet": {
+                      "text": "cos"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 58,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "733853ec43659770130fc011340d39a2170d89abdf83c7a4481b92c981c42d52"
             },
             "properties": {
               "ideaSeverity": "ERROR",
@@ -8561,6 +8509,58 @@
             "kind": "fail",
             "level": "error",
             "message": {
+              "text": "Unresolved reference 'figures'",
+              "markdown": "Unresolved reference 'figures'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/figures/arc.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 3,
+                    "startColumn": 6,
+                    "charOffset": 32,
+                    "charLength": 7,
+                    "snippet": {
+                      "text": "figures"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 95,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point\nfrom figures.segment import Segment\n"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "985b6f3b90332b6b540c57930f6b87f21891fa012e28cc8db14af68a9ba48b2a"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
               "text": "Unresolved reference 'PyQt6'",
               "markdown": "Unresolved reference 'PyQt6'"
             },
@@ -8672,58 +8672,6 @@
               {
                 "physicalLocation": {
                   "artifactLocation": {
-                    "uri": "lab_02/figures/arc.py",
-                    "uriBaseId": "SRCROOT"
-                  },
-                  "region": {
-                    "startLine": 1,
-                    "startColumn": 23,
-                    "charOffset": 22,
-                    "charLength": 3,
-                    "snippet": {
-                      "text": "sin"
-                    },
-                    "sourceLanguage": "Python"
-                  },
-                  "contextRegion": {
-                    "startLine": 1,
-                    "startColumn": 1,
-                    "charOffset": 0,
-                    "charLength": 62,
-                    "snippet": {
-                      "text": "from math import cos, sin, pi\n\nfrom figures.point import Point"
-                    },
-                    "sourceLanguage": "Python"
-                  }
-                },
-                "logicalLocations": [
-                  {
-                    "fullyQualifiedName": "project",
-                    "kind": "module"
-                  }
-                ]
-              }
-            ],
-            "partialFingerprints": {
-              "equalIndicator/v1": "aed730416336ff2156a6637ddaed897c4086641e03b3cb1244ccd9068cdb04ca"
-            },
-            "properties": {
-              "ideaSeverity": "ERROR",
-              "qodanaSeverity": "Critical"
-            }
-          },
-          {
-            "ruleId": "PyUnresolvedReferencesInspection",
-            "kind": "fail",
-            "level": "error",
-            "message": {
-              "text": "Unresolved reference 'sin'",
-              "markdown": "Unresolved reference 'sin'"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
                     "uri": "lab_02/figures/point.py",
                     "uriBaseId": "SRCROOT"
                   },
@@ -8810,6 +8758,58 @@
             ],
             "partialFingerprints": {
               "equalIndicator/v1": "bc121d4ab37ab8bc52999a51ba8df8ce4a318708e4b311b435ef2865eb3df815"
+            },
+            "properties": {
+              "ideaSeverity": "ERROR",
+              "qodanaSeverity": "Critical"
+            }
+          },
+          {
+            "ruleId": "PyUnresolvedReferencesInspection",
+            "kind": "fail",
+            "level": "error",
+            "message": {
+              "text": "Unresolved reference 'math'",
+              "markdown": "Unresolved reference 'math'"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "lab_02/figures/arc.py",
+                    "uriBaseId": "SRCROOT"
+                  },
+                  "region": {
+                    "startLine": 1,
+                    "startColumn": 6,
+                    "charOffset": 5,
+                    "charLength": 4,
+                    "snippet": {
+                      "text": "math"
+                    },
+                    "sourceLanguage": "Python"
+                  },
+                  "contextRegion": {
+                    "startLine": 1,
+                    "startColumn": 1,
+                    "charOffset": 0,
+                    "charLength": 58,
+                    "snippet": {
+                      "text": "from math import cos, sin\n\nfrom figures.point import Point"
+                    },
+                    "sourceLanguage": "Python"
+                  }
+                },
+                "logicalLocations": [
+                  {
+                    "fullyQualifiedName": "project",
+                    "kind": "module"
+                  }
+                ]
+              }
+            ],
+            "partialFingerprints": {
+              "equalIndicator/v1": "ca1eba924eacc2d199b9189723fad5053b8efc118332f5515b2f43f3cf9ec246"
             },
             "properties": {
               "ideaSeverity": "ERROR",

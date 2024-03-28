@@ -1,6 +1,7 @@
 {
   "languages": [
     "XML",
+    ".gitignore (GitIgnore)",
     "Python",
     "YAML",
     "textmate"
